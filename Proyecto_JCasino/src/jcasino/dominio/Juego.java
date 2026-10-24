@@ -33,5 +33,7 @@ public abstract class Juego {
 	}
 	
 	
+	//Añadir Función para las apuestas
+	
 	
 }
