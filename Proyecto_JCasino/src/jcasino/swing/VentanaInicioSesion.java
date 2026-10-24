@@ -47,9 +47,21 @@ public class VentanaInicioSesion extends JFrame {
 				
 		
 		panelCentro.add(labelUsuario);
-		panelCentro.add(Box.createVerticalStrut(20)); // Espacio pequeño entre label y textfield
+		panelCentro.add(Box.createVerticalStrut(10)); // Espacio pequeño entre label y textfield
 		panelCentro.add(txtUsuario);
 		
+		// Label de contraseña
+		JLabel labelContrasenna = new JLabel("Contraseña");
+		labelContrasenna.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		JPasswordField txtContrasenna = new JPasswordField();
+		txtContrasenna.setMaximumSize(new Dimension(200, 25));
+		
+		panelCentro.add(Box.createVerticalStrut(30)); // Espacio grande para separar usuario y contraseña
+		
+		panelCentro.add(labelContrasenna);
+		panelCentro.add(Box.createVerticalStrut(10));
+		panelCentro.add(txtContrasenna);
 
 		
 		// Botones de inicio de sesion y registro
