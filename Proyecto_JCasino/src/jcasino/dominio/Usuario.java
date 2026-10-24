@@ -15,7 +15,7 @@ public abstract class Usuario {
 	
 	// Constructor para los datos de un nuevo usuario
 	public Usuario(String nombreUsuario, String nombre, String apellidos, int edad, String genero, String telefono,
-			String correo, String contrasenna, double saldoActual) {
+			String correo, String contrasenna) {
 		super();
 		this.nombreUsuario = nombreUsuario;
 		this.nombre = nombre;
@@ -27,11 +27,11 @@ public abstract class Usuario {
 		this.contrasenna = contrasenna;
 	}
 
+	
 	// Creación de getters y setters 
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}
-
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
@@ -39,7 +39,6 @@ public abstract class Usuario {
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -47,7 +46,6 @@ public abstract class Usuario {
 	public String getApellidos() {
 		return apellidos;
 	}
-
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
@@ -55,7 +53,6 @@ public abstract class Usuario {
 	public int getEdad() {
 		return edad;
 	}
-
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
@@ -63,15 +60,13 @@ public abstract class Usuario {
 	public String getGenero() {
 		return genero;
 	}
-
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-
+	
 	public String getTelefono() {
 		return telefono;
 	}
-
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
@@ -79,29 +74,23 @@ public abstract class Usuario {
 	public String getCorreo() {
 		return correo;
 	}
-
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-
+	
 	public String getContrasenna() {
 		return contrasenna;
 	}
-
 	public void setContrasenna(String contrasenna) {
 		this.contrasenna = contrasenna;
 	}
 
+	
 	// Creacion de toString, salvo contraseña por motivos de seguridad
 	@Override
 	public String toString() {
 		return "Usuario [nombreUsuario=" + nombreUsuario + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad="
 				+ edad + ", genero=" + genero + ", telefono=" + telefono + ", correo=" + correo +"]";
 	}
-	
-	
-	
-	
-	
 	
 }

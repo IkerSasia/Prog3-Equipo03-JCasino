@@ -5,14 +5,14 @@ public class Jugador extends Usuario{
 	private double saldo;
 	
 	public Jugador(String nombreUsuario, String nombre, String apellidos, int edad, String genero, String telefono,
-			String correo, String contrasenna, double saldoActual) {
-		super(nombreUsuario, nombre, apellidos, edad, genero, telefono, correo, contrasenna, saldoActual);
-		
+			String correo, String contrasenna) {
+		super(nombreUsuario, nombre, apellidos, edad, genero, telefono, correo, contrasenna);
+		this.saldo = 0;
 	}
 	
 	@Override
 	public String toString() {
-		return "Jugador [saldo=" + saldo + "]";
+		return super.toString() + "Jugador [saldo=" + saldo + "]";
 	}
 	
 	public double getSaldo() {
