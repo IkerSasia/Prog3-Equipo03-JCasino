@@ -12,14 +12,34 @@ public class MainPrueba {
 		System.out.println();
 		
 		//Hacemos la Slot
-		Slot pruebaSlot = new Slot("Slot Prueba", 2.0);
+//		Slot pruebaSlot = new Slot("Slot Prueba", 2.0);
+//		
+//		for(int i = 1; i <= 5; i++){
+//			System.out.println("--- TIRADA "+i+" ---");
+//			pruebaSlot.jugar(2.0, jugador1);
+//			System.out.println("Saldo actual: "+jugador1.getSaldo()+"€");
+//			System.out.println();
+//		}
 		
-		for(int i = 1; i <= 5; i++){
-			System.out.println("--- TIRADA "+i+" ---");
-			pruebaSlot.jugar(2.0, jugador1);
+		//Hacemos la Ruleta
+		Ruleta pruebaRuleta = new Ruleta("Ruleta Prueba", 5.0);
+			int tirada = 1;	
+		while(jugador1.getSaldo()<300 && jugador1.getSaldo()>0) {
+			
+			System.out.println("--- TIRADA "+tirada+"---");
+			pruebaRuleta.setNumeroApostado(22);
+			System.out.println("El numero elegido por el Jugador es: 22");
+			pruebaRuleta.jugar(5.0, jugador1);
 			System.out.println("Saldo actual: "+jugador1.getSaldo()+"€");
 			System.out.println();
+
+			tirada = tirada +1;
+			
+				
+			}
 		}
-	}
+	
+		
+	
 
 }
