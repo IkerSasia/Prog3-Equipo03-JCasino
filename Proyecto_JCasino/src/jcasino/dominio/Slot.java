@@ -18,7 +18,13 @@ public class Slot extends Juego {
 		//Comprobamos que el saldo del Jugador llegue a la apuesta mínima
 		if (cantidadApostada < getApuestaMinima()) {
 			System.out.println("Apuesta Rechazada: No dispone del saldo suficiente");
-			return 0.0;
+			return 0;
+		}
+		
+		//Cobramos el saldo de la apuesta
+		if (!jugador.retirarSaldo(cantidadApostada)) {
+			System.out.println("Apuesta Rechazada: Saldo insuficiente");
+			return 0;
 		}
 		
 		int ranura1 = tirada.nextInt(7) + 1;
@@ -33,14 +39,14 @@ public class Slot extends Juego {
 			double premio = cantidadApostada * 50;
 			jugador.recargarSaldo(premio);
 			System.out.println("¡JACKPOT!");
-			System.out.println("Has ganado: "+premio);
+			System.out.println("Has ganado: "+premio+"€");
 			return premio;
 		}
 		//Si sale cualquier otra combianción
 		else if (ranura1 == ranura2 && ranura2 == ranura3){
 			double premio = cantidadApostada * 10;
 			jugador.recargarSaldo(premio);
-			System.out.println("Has ganado: "+premio);
+			System.out.println("Has ganado: "+premio+"€");
 			return premio;
 		}
 		//Cualquier otra cosa, pierdes
