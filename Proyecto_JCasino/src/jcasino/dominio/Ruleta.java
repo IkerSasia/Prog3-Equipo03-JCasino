@@ -10,5 +10,5 @@ public class Ruleta extends Juego{
 		super(nombre, apuestaMinima);
 	}
 	
-	
+	//Función para elegir un número, y asiganar el color a cada número
 }
