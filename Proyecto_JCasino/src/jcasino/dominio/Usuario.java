@@ -1,6 +1,6 @@
 package jcasino.dominio;
 
-public class Usuario {
+public abstract class Usuario {
 	
 	// Atributos del Usuario 
 	private String nombreUsuario;
