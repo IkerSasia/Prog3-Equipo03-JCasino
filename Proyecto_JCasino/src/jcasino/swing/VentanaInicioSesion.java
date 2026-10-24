@@ -1,6 +1,7 @@
 package jcasino.swing;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
@@ -32,11 +33,14 @@ public class VentanaInicioSesion extends JFrame {
 		panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
 		
 		// Creamos un borde al panel para apilar todo en el centro
-		panelCentro.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 20));
+		panelCentro.setBorder(BorderFactory.createEmptyBorder(20, 80, 0, 80));
 		
-		// Panel con el nombre de usuario
-		panelCentro.add(new JLabel("Nombre de Usuario"));
-		panelCentro.add(new JTextField());
+		// Creamos un label de usuario
+		JLabel labelUsuario = new JLabel("Nombre de Usuario");
+		labelUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		
+		
 		
 		// Panel con las contraseña
 		panelCentro.add(new JLabel("Contraseña"));
