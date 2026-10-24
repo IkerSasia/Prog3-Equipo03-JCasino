@@ -123,6 +123,14 @@ public class Usuario {
 	public void setSaldoActual(double saldoActual) {
 		this.saldoActual = saldoActual;
 	}
+
+	// Creacion de toString, salvo contraseña por motivos de seguridad
+	@Override
+	public String toString() {
+		return "Usuario [nombreUsuario=" + nombreUsuario + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad="
+				+ edad + ", genero=" + genero + ", telefono=" + telefono + ", correo=" + correo + ", saldoActual="
+				+ saldoActual + "]";
+	}
 	
 	
 	
