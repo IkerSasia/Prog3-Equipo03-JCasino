@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -45,12 +46,11 @@ public class VentanaInicioSesion extends JFrame {
 		txtUsuario.setMaximumSize(new Dimension(200, 25));
 				
 		
+		panelCentro.add(labelUsuario);
+		panelCentro.add(Box.createVerticalStrut(20)); // Espacio pequeño entre label y textfield
+		panelCentro.add(txtUsuario);
 		
-		
-		
-		// Panel con las contraseña
-		panelCentro.add(new JLabel("Contraseña"));
-		panelCentro.add(new JPasswordField());
+
 		
 		// Botones de inicio de sesion y registro
 		JPanel panelSur = new JPanel(new FlowLayout()); 
