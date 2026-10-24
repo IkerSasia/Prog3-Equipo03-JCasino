@@ -1,6 +1,12 @@
 package jcasino.swing;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class VentanaInicioSesion extends JFrame {
 	
@@ -10,6 +16,24 @@ public class VentanaInicioSesion extends JFrame {
 		setSize(400, 300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); 
+		
+		// Añadimos un BorderLayout a la ventana
+		setLayout(new BorderLayout());
+		
+		
+		JPanel panelCentro = new JPanel(new GridLayout(2, 2, 10, 10));
+		
+		panelCentro.add(new JLabel("Nombre de Usuario"));
+		panelCentro.add(new JTextField());
+		
+		
+		// Añadimos los paneles a la ventana y hacemos que se vea
+		add(panelCentro, BorderLayout.CENTER);
+		setVisible(true);
 	}
 
+	
+	public static void main(String[] args) {
+		new VentanaInicioSesion();
+	}
 }
