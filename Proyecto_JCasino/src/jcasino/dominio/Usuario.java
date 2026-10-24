@@ -49,6 +49,83 @@ public class Usuario {
 		}
 		return false; // Transacción rechazada si la cantidad solicitada supera el saldo actual
 	}
+
+	
+	// Creación de getters y setters 
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getContrasenna() {
+		return contrasenna;
+	}
+
+	public void setContrasenna(String contrasenna) {
+		this.contrasenna = contrasenna;
+	}
+
+	public double getSaldoActual() {
+		return saldoActual;
+	}
+
+	public void setSaldoActual(double saldoActual) {
+		this.saldoActual = saldoActual;
+	}
+	
+	
+	
 	
 	
 	
