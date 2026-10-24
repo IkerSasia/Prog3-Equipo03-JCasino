@@ -2,6 +2,7 @@ package jcasino.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
@@ -38,6 +39,11 @@ public class VentanaInicioSesion extends JFrame {
 		// Creamos un label de usuario
 		JLabel labelUsuario = new JLabel("Nombre de Usuario");
 		labelUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		// Creamos el jtextField para el campo 
+		JTextField txtUsuario = new JTextField();
+		txtUsuario.setMaximumSize(new Dimension(200, 25));
+				
 		
 		
 		
