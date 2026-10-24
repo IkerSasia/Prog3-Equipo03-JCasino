@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class VentanaInicioSesion extends JFrame {
@@ -23,8 +24,13 @@ public class VentanaInicioSesion extends JFrame {
 		
 		JPanel panelCentro = new JPanel(new GridLayout(2, 2, 10, 10));
 		
+		// Panel con el nombre de usuario
 		panelCentro.add(new JLabel("Nombre de Usuario"));
 		panelCentro.add(new JTextField());
+		
+		// Panel con las contraseña
+		panelCentro.add(new JLabel("Contraseña"));
+		panelCentro.add(new JPasswordField());
 		
 		
 		// Añadimos los paneles a la ventana y hacemos que se vea
