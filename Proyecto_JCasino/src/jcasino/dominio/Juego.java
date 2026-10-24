@@ -33,7 +33,9 @@ public abstract class Juego {
 	}
 	
 	
-	//Añadir Función para las apuestas
+	//Método abstracto para forzar a los 3 juegos a usar el mismo formato para procesar las apuestas
+	public abstract double jugar(double cantidadApostada, Jugador jugador);
+	
 	
 	
 }

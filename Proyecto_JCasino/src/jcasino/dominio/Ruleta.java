@@ -8,7 +8,15 @@ public class Ruleta extends Juego{
 	
 	public Ruleta(String nombre, double apuestaMinima) {
 		super(nombre, apuestaMinima);
+		this.giro = new Random();
 	}
 	
-	//Función para elegir un número, y asiganar el color a cada número
+	
+	@Override
+	public double jugar(double cantidadApostada, Jugador jugador) {
+		//Función para elegir un número, y asiganar el color a cada número
+		return 0;
+	}
+	
+	
 }

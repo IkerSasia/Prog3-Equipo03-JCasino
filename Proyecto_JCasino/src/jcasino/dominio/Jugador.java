@@ -32,13 +32,12 @@ public class Jugador extends Usuario{
 	}
 	
 	// Método para retirar saldo
-		public boolean retirarSaldo(double cantidad) {
-			if (cantidad > 0 && this.saldo >= cantidad) { // La segunda condición hace que no se pueda quedar en negativo
-				this.saldo -= cantidad;
-				
-				return true; // Transacción completada
-			}
-			return false; // Transacción rechazada si la cantidad solicitada supera el saldo actual
+	public boolean retirarSaldo(double cantidad) {
+		if (cantidad > 0 && this.saldo >= cantidad) { // La segunda condición hace que no se pueda quedar en negativo
+			this.saldo -= cantidad;
+			return true; // Transacción completada
 		}
+			return false; // Transacción rechazada si la cantidad solicitada supera el saldo actual
+	}
 	
 }
