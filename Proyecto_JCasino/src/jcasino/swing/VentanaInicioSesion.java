@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,9 +25,13 @@ public class VentanaInicioSesion extends JFrame {
 		// Añadimos un BorderLayout a la ventana
 		setLayout(new BorderLayout());
 		
-		JPanel panelCentro = new JPanel(new GridLayout(2, 2, 10, 10));
+		// PanelCentral
+		JPanel panelCentro = new JPanel();
 		
-		// Creamos un borde al panel
+		// Aplicamos un BoxLayout en el eje y 
+		panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
+		
+		// Creamos un borde al panel para apilar todo en el centro
 		panelCentro.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 20));
 		
 		// Panel con el nombre de usuario
@@ -50,6 +55,7 @@ public class VentanaInicioSesion extends JFrame {
 		
 		// Añadimos los paneles a la ventana y hacemos que se vea
 		add(panelCentro, BorderLayout.CENTER);
+		add(panelSur, BorderLayout.SOUTH);
 		setVisible(true);
 	}
 
