@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -38,6 +39,13 @@ public class VentanaInicioSesion extends JFrame {
 		
 		// Botones de inicio de sesion y registro
 		JPanel panelSur = new JPanel(new FlowLayout()); 
+		
+		// Creamos los botones 
+		JButton botonInicioSesion = new JButton("Iniciar Sesión");
+		JButton botonRegistarse = new JButton("Registrarse");
+		
+		panelSur.add(botonInicioSesion);
+		panelSur.add(botonRegistarse);
 		
 		
 		// Añadimos los paneles a la ventana y hacemos que se vea
