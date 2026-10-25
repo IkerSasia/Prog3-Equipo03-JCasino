@@ -117,7 +117,9 @@ public class VentanaMenuJuegos extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO: Aquí pondrás la lógica o ventana para abrir la Ruleta
-				System.out.println("Abriendo Ruleta...");
+				dispose();
+				VentanaRuleta ruleta = new VentanaRuleta();
+				ruleta.setVisible(true);
 			}
 		});
 		

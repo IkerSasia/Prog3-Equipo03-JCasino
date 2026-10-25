@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class VentanaSlot extends JFrame {
@@ -107,11 +108,14 @@ public class VentanaSlot extends JFrame {
 				
 				labelRodillos.setText(("[ " + ranura1 + " ] - [ " + ranura2 + " ] - [ " + ranura3 + " ]"));
 				
+				if (ranura1 == 7 && ranura2 == 7 && ranura3 == 7) {
+					JOptionPane.showMessageDialog(VentanaSlot.this, "¡JACKPOT! Has ganado el premio gordo.");
+				} else if (ranura1 == ranura2 && ranura2 == ranura3) {
+					JOptionPane.showMessageDialog(VentanaSlot.this, "¡Has ganado una combinación!");
+				}
 				
 			}
 		});
-		
-		
 		
 		
 		
