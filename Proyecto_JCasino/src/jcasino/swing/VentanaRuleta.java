@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,7 +23,7 @@ public class VentanaRuleta extends JFrame {
 		setLocationRelativeTo(null); 
 		
 		// Personalización de la ventana
-		Color colorFondo = new Color(30, 30, 30);
+		Color colorFondo = new Color(46, 139, 87);
 		Color colorTexto = Color.WHITE;
 		Font fuenteNormal = new Font("Segoe UI", Font.BOLD, 14);
 		
@@ -44,6 +45,20 @@ public class VentanaRuleta extends JFrame {
 		labelNumeroGanador.setPreferredSize(new Dimension(150, 150)); // Hacemos un cuadrado grande para mostrar el numero
 		
 		panelMarcador.add(labelNumeroGanador);
+		
+		
+		// ---ZONA CENTRAL: PANEL DE APUESTAS---
+		JPanel panelApuestas = new JPanel();
+		panelApuestas.setLayout(new BoxLayout(panelApuestas, BoxLayout.Y_AXIS));
+		panelApuestas.setBackground(colorFondo);
+		
+		// Crea
+		
+		
+		
+		
+		
+		
 		
 		add(panelMarcador, BorderLayout.NORTH);
 		setVisible(true);
