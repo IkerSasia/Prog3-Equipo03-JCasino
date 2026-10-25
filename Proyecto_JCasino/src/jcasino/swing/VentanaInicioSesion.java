@@ -1,10 +1,11 @@
 package jcasino.swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -27,6 +28,13 @@ public class VentanaInicioSesion extends JFrame {
 		setSize(400, 300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); 
+		
+		// Personalización de la ventana
+		Color colorFondo = new Color(30, 30, 30);
+		Color colorTexto = Color.WHITE;
+		Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 14);
+		Font fuenteCajas = new Font("Segoe UI", Font.PLAIN, 14);
+		
 		
 		// Añadimos un BorderLayout a la ventana
 		setLayout(new BorderLayout());
@@ -83,7 +91,6 @@ public class VentanaInicioSesion extends JFrame {
 		add(panelSur, BorderLayout.SOUTH);
 		setVisible(true);
 		
-		// Pureba pachin github
 	}
 
 	
