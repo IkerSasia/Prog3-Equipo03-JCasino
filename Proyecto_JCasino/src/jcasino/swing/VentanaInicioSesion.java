@@ -47,14 +47,18 @@ public class VentanaInicioSesion extends JFrame {
 		
 		// Creamos un borde al panel para apilar todo en el centro
 		panelCentro.setBorder(BorderFactory.createEmptyBorder(20, 80, 0, 80));
+		panelCentro.setBackground(colorFondo); // Aplicar color de Fondo
 		
 		// Creamos un label de usuario
 		JLabel labelUsuario = new JLabel("Nombre de Usuario");
 		labelUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
+		labelUsuario.setFont(fuenteTitulo); // Fuente del titulo
+		labelUsuario.setForeground(colorTexto);
 		
 		// Creamos el jtextField para el campo 
 		JTextField txtUsuario = new JTextField();
 		txtUsuario.setMaximumSize(new Dimension(200, 25));
+		txtUsuario.setFont(fuenteCajas);
 				
 		
 		panelCentro.add(labelUsuario);
@@ -64,9 +68,12 @@ public class VentanaInicioSesion extends JFrame {
 		// Label de contraseña
 		JLabel labelContrasenna = new JLabel("Contraseña");
 		labelContrasenna.setAlignmentX(Component.CENTER_ALIGNMENT);
+		labelContrasenna.setForeground(colorTexto);
+		labelContrasenna.setFont(fuenteTitulo);
 		
 		JPasswordField txtContrasenna = new JPasswordField();
 		txtContrasenna.setMaximumSize(new Dimension(200, 25));
+		txtContrasenna.setFont(fuenteCajas);
 		
 		panelCentro.add(Box.createVerticalStrut(30)); // Espacio grande para separar usuario y contraseña
 		
@@ -77,7 +84,7 @@ public class VentanaInicioSesion extends JFrame {
 		
 		// Botones de inicio de sesion y registro
 		JPanel panelSur = new JPanel(new FlowLayout()); 
-		
+		panelSur.setBackground(colorFondo);
 		// Creamos los botones 
 		JButton botonInicioSesion = new JButton("Iniciar Sesión");
 		JButton botonRegistarse = new JButton("Registrarse");
