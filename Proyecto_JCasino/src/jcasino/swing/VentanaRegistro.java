@@ -14,6 +14,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -87,13 +88,22 @@ public class VentanaRegistro extends JFrame {
 		panelGenero.add(rbFemenino);
 		
 		// Usuario
-		JLabel labelUsuario = new JLabel("Nnombre de Usuario");
+		JLabel labelUsuario = new JLabel("Nombre de Usuario");
 		labelUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
 		labelUsuario.setForeground(colorTexto);
 		labelUsuario.setFont(fuenteTitulo);
 		JTextField txtUsuario = new JTextField();
 		txtUsuario.setMaximumSize(new Dimension(250, 30));
 		txtUsuario.setHorizontalAlignment(JTextField.CENTER);
+		
+		// Contraseña
+        JLabel labelContrasena = new JLabel("Contraseña");
+        labelContrasena.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelContrasena.setForeground(colorTexto);
+        labelContrasena.setFont(fuenteTitulo);
+        JPasswordField txtContrasena = new JPasswordField();
+        txtContrasena.setMaximumSize(new Dimension(250, 30)); 
+        txtContrasena.setHorizontalAlignment(JTextField.CENTER);
 		
 		
 		// Añadimos todo al panel central
@@ -111,6 +121,17 @@ public class VentanaRegistro extends JFrame {
 		panelCentro.add(labelGenero);
 		panelCentro.add(panelGenero);
 		panelCentro.add(Box.createVerticalStrut(5));
+		
+		panelCentro.add(labelUsuario);
+		panelCentro.add(Box.createVerticalStrut(5));
+		panelCentro.add(txtUsuario);
+		panelCentro.add(Box.createVerticalStrut(15));
+		
+		panelCentro.add(labelContrasena);
+		panelCentro.add(Box.createVerticalStrut(5));
+		panelCentro.add(txtContrasena);
+		
+		
 		
 		
 		
