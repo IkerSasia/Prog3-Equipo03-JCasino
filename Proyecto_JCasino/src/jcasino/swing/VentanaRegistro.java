@@ -49,6 +49,15 @@ public class VentanaRegistro extends JFrame {
 		txtNombre.setMaximumSize(new Dimension(250, 30));
 		txtNombre.setHorizontalAlignment(JTextField.CENTER);
 		
+		// Apellidos 
+		JLabel labelApellidos = new JLabel("Apellidos");
+		labelApellidos.setAlignmentX(Component.CENTER_ALIGNMENT);
+		labelApellidos.setForeground(colorTexto);
+		labelApellidos.setFont(fuenteTitulo);
+		JTextField txtApellidos = new JTextField();
+		txtApellidos.setMaximumSize(new Dimension(250, 30));
+		txtApellidos.setHorizontalAlignment(JTextField.CENTER);
+		
 		
 		
 		setVisible(true);
