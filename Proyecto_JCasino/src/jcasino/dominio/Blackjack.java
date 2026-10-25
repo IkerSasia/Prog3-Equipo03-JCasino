@@ -32,48 +32,47 @@ public class Blackjack extends Juego{
 			return 0;
 		}
 		
+		//Asignamos las cartas al Crupier y al Jugador
 		int puntosJugador = sacarCarta() + sacarCarta();
 		int puntosCrupier = sacarCarta() + sacarCarta();
 		
 		System.out.println("Tus cartas suman: "+puntosJugador);
 		System.out.println("Las cartas del crupies suman: "+puntosCrupier);
 		
-		//Blackjack
+		
 		if (puntosJugador == 21 && puntosCrupier < 21) {
+			//Blackjack
 			double premio = cantidadApostada * 2.5;
 			jugador.recargarSaldo(premio);
 			System.out.println("Blackjack");
 			System.out.println("Has ganado: "+premio+"€");
 			return premio;
 			
-		}
-		//Empate
-		else if (puntosJugador <= 21 && puntosCrupier == puntosJugador) {
+		}else if (puntosJugador <= 21 && puntosCrupier == puntosJugador) {
+			//Empate
 			double premio = cantidadApostada * 1;
 			jugador.recargarSaldo(premio);
 			System.out.println("Empate, recuperas la cantidad apostada");
 			return premio;
 			
-		}
-		//Ganar al Crupier
-		else if (puntosJugador < 21 && puntosJugador > puntosCrupier || puntosCrupier > 21) {
+		}else if (puntosJugador < 21 && puntosJugador > puntosCrupier || puntosCrupier > 21) {
+			//Ganar al Crupier
 			double premio = cantidadApostada * 2;
 			jugador.recargarSaldo(premio);
 			System.out.println("Has ganado al Crupier, tu premio es de:"+premio+"€");
 			return premio;
 			
-		}
-		//Perder por suma mayor a 21
-		else if (puntosJugador > 21) {
+		}else if (puntosJugador > 21) {
+			//Perder por suma mayor a 21
 			System.out.println("¡Te has pasado de 21!, la siguiente vez será");
 			return 0;
 			
-		}
-		//Perder contra el Crupier
-		else{
+		}else{
+			//Perder contra el Crupier
 			System.out.println("El Crupier tiene mejor mano que tu, la proxima vez será");
 			return 0;
 		}
+		
 	}
 	
 	

@@ -27,6 +27,7 @@ public class Slot extends Juego {
 			return 0;
 		}
 		
+		//Colocamos el valor aleatorio a las 3 ranuras de la Slot
 		int ranura1 = tirada.nextInt(7) + 1;
 		int ranura2 = tirada.nextInt(7) + 1;
 		int ranura3 = tirada.nextInt(7) + 1;

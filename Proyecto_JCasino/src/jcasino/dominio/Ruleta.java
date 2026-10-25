@@ -26,6 +26,7 @@ public class Ruleta extends Juego{
 	@Override
 	public double jugar(double cantidadApostada, Jugador jugador) {
 		
+		//Comprobamos que el número elegido por el jugar está en el rango posible
 		if(this.numeroApostado < 0 || this.numeroApostado > 36) {
 			System.out.println("Apuesta Rechaza: Debes elegir un número entre el 0 y el 36");
 			return 0;
