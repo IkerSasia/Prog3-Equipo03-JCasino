@@ -116,6 +116,14 @@ public class VentanaRuleta extends JFrame {
         
         // ---ZONA INFERIOR: BOTONES DE ACCIÓN---
         JPanel panelSur = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 20));
+        panelSur.setBackground(colorFondo);
+        
+        JButton botonVolver = new JButton("SALIR");
+        botonVolver.setBackground(new Color(80, 80, 80));
+        botonVolver.setForeground(Color.WHITE);
+        botonVolver.setFocusable(false);
+        botonVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
         
         
         
