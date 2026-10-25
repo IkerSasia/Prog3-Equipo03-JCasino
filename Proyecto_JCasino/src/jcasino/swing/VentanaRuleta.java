@@ -45,7 +45,7 @@ public class VentanaRuleta extends JFrame {
 		
 		panelMarcador.add(labelNumeroGanador);
 		
-		
+		add(panelMarcador, BorderLayout.NORTH);
 		setVisible(true);
 		
 	}
