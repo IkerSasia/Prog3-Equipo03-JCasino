@@ -76,7 +76,7 @@ public class VentanaRuleta extends JFrame {
 		// Fila 1: Cantidad a apostar 
 		JPanel panelCantidad = new JPanel(new FlowLayout());
 		panelCantidad.setBackground(colorFondo);
-		JLabel labelCantidad = new JLabel("Cantidad (€):");
+		JLabel labelCantidad = new JLabel("Cantidad a apostar(€):");
 		labelCantidad.setForeground(colorTexto);
 		labelCantidad.setFont(fuenteNormal);
 		JTextField txtCantidad = new JTextField(10); // Ancho de columna de 10
