@@ -107,8 +107,9 @@ public class VentanaMenuJuegos extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Abriendo BlackJack...");
-				
+				dispose();
+				ventanaBlackjack blackjack = new ventanaBlackjack();
+				blackjack.setVisible(true);
 			}
 		});
 		

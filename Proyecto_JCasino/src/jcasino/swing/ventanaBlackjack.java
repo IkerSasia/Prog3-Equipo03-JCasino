@@ -3,6 +3,8 @@ package jcasino.swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -76,22 +78,36 @@ public class ventanaBlackjack extends JFrame{
 				
 		JButton botonJugar = new JButton("Jugar");
 		botonJugar.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		botonJugar.setBackground(Color.yellow);
-		botonJugar.setForeground(Color.black);
+		botonJugar.setBackground(new Color(80, 80, 80));
+		botonJugar.setForeground(Color.white);
+		botonJugar.setFocusable(false);
 		
 		JButton botonPedir = new JButton("Pedir carta");
 		botonPedir.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		botonPedir.setBackground(Color.blue);
+		botonPedir.setBackground(new Color(80, 80, 80));
 		botonPedir.setForeground(Color.white);
+		botonPedir.setFocusable(false);
 		
 		JButton botonSalir = new JButton("Salir");
 		botonSalir.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		botonSalir.setBackground(Color.red);
+		botonSalir.setBackground(new Color(80, 80, 80));
 		botonSalir.setForeground(Color.white);
+		botonSalir.setFocusable(false);
 				
 		panelBotones.add(botonJugar);
 		panelBotones.add(botonPedir);
 		panelBotones.add(botonSalir);
+		
+		//Acción para el botón salir
+        botonSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaMenuJuegos().setVisible(true);
+				dispose();
+				
+			}
+		});
 				
 		// Añadimos los botones a la parte sur del panel principal
 		panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
