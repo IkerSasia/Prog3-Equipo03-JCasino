@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
@@ -11,6 +12,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class VentanaRegistro extends JFrame {
@@ -58,13 +60,31 @@ public class VentanaRegistro extends JFrame {
 		txtApellidos.setMaximumSize(new Dimension(250, 30));
 		txtApellidos.setHorizontalAlignment(JTextField.CENTER);
 		
+		// Género (Radio Buttons)
+		JLabel labelGenero = new JLabel("Género");
+		labelGenero.setAlignmentX(Component.CENTER_ALIGNMENT);
+		labelGenero.setForeground(colorTexto);
+		labelGenero.setFont(fuenteTitulo);
+		
+		JPanel panelGenero = new JPanel(new FlowLayout());
+		panelGenero.setBackground(colorFondo);
+		JRadioButton rbMasculino = new JRadioButton("Masculino");
+		JRadioButton rbFemenino = new JRadioButton("Femenino");
+		
+		// Estilos para los radio Buttons
+		rbMasculino.setForeground(colorTexto);
+		rbMasculino.setBackground(colorFondo);
+		rbFemenino.setForeground(colorTexto);
+		rbFemenino.setBackground(colorFondo);
+		
+		
 		
 		
 		setVisible(true);
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		new VentanaRegistro();
 
 	}
 
