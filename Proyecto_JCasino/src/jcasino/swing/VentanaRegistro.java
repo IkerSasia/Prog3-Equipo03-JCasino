@@ -162,7 +162,7 @@ public class VentanaRegistro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				VentanaInicioSesion ventanaLogin = new VentanaInicioSesion();
 				ventanaLogin.setVisible(true);
-				dispose();
+				dispose(); // Accion para volver a la pestaña anterior 
 				
 			}
 		});
@@ -170,9 +170,6 @@ public class VentanaRegistro extends JFrame {
 		
 		panelSur.add(botonRegistrar);
 		panelSur.add(botonVolver);
-		
-		
-		
 		
 		
 		// Añadimos los paneles a la ventana y hacemos que se vea
