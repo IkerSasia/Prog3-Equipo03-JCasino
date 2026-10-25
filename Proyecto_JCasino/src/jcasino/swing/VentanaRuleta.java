@@ -55,12 +55,15 @@ public class VentanaRuleta extends JFrame {
 		
 		// Creamos un borde para el titulo con la zona de apuestas 
 		TitledBorder bordeApuestas = BorderFactory.createTitledBorder(
-				BorderFactory.createLineBorder(Color.GRAY), "Tu Apuesta");
+				BorderFactory.createLineBorder(Color.black), "Tu Apuesta");
 		bordeApuestas.setTitleColor(Color.LIGHT_GRAY);
 		bordeApuestas.setTitleFont(new Font("Segoe UI", Font.BOLD, 14));
+		bordeApuestas.setTitleJustification(TitledBorder.CENTER); // Centramos el borde
+		
 		panelApuestas.setBorder(BorderFactory.createCompoundBorder(
-				BorderFactory.createEmptyBorder(), // Margen Exterior
+				BorderFactory.createEmptyBorder(10, 40, 10, 40), // Margen Exterior
 				bordeApuestas));  // Margen interior con el titulo
+		
 		
 		
 		
