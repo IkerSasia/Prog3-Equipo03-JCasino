@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
+
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -18,6 +18,9 @@ import javax.swing.JTextField;
 
 public class VentanaInicioSesion extends JFrame {
 	
+	private static final long serialVersionUID = 1L;
+
+
 	public VentanaInicioSesion() {
 		// Creamos la ventana
 		setTitle("Inicio de Sesión");

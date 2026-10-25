@@ -31,11 +31,13 @@ public class Ruleta extends Juego{
 			return 0;
 		}
 		
+		//Comprobamos que el saldo del Jugador llegue a la apuesta mínima
 		if (cantidadApostada < getApuestaMinima()) {
 			System.out.println("Apuesta Rechazada: Saldo insuficiente");
 			return 0;
 		}
 		
+		//Cobramos el saldo de la apuesta
 		if (!jugador.retirarSaldo(cantidadApostada)) {
 			System.out.println("Apuesta Rechazada. Saldo insuficiente");
 			return 0;
