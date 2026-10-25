@@ -3,6 +3,7 @@ package jcasino.swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
@@ -10,6 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
@@ -64,6 +66,17 @@ public class VentanaRuleta extends JFrame {
 				BorderFactory.createEmptyBorder(10, 40, 10, 40), // Margen Exterior
 				bordeApuestas));  // Margen interior con el titulo
 		
+		
+		// Fila 1: Cantidad a apostar 
+		JPanel panelCantidad = new JPanel(new FlowLayout());
+		panelCantidad.setBackground(colorFondo);
+		JLabel labelCantidad = new JLabel("Cantidad (€):");
+		labelCantidad.setForeground(colorTexto);
+		labelCantidad.setFont(fuenteNormal);
+		JTextField txtCantidad = new JTextField(10); // Ancho de columna de 10
+		
+		panelCantidad.add(labelCantidad);
+		panelCantidad.add(txtCantidad);
 		
 		
 		
