@@ -82,6 +82,8 @@ public class VentanaInicioSesion extends JFrame {
 		add(panelCentro, BorderLayout.CENTER);
 		add(panelSur, BorderLayout.SOUTH);
 		setVisible(true);
+		
+		// Pureba pachin github
 	}
 
 	
