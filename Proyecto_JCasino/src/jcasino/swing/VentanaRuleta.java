@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -145,12 +146,23 @@ public class VentanaRuleta extends JFrame {
 		});
         
         // ACCION DEL BOTON GIRAR
-        botonGirar
+        botonGirar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Random numRandom = new Random();
+				int numero = numRandom.nextInt(37); // Genera un numero random del 0 al 36
+				
+				labelNumeroGanador.setText(String.valueOf(numero)); // Ponemos en el cuadrado el numero
+				
+			}
+		});
         
         
 		
 		add(panelMarcador, BorderLayout.NORTH);
 		add(panelApuestas, BorderLayout.CENTER);
+		add(panelSur, BorderLayout.SOUTH);
 		setVisible(true);
 		
 	}
