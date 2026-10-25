@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -95,6 +96,20 @@ public class VentanaSlot extends JFrame {
 			}
 		} );
 		
+		botonGirar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Random tirada = new Random();
+				int ranura1 = tirada.nextInt(7) + 1;
+				int ranura2 = tirada.nextInt(7) + 1;
+				int ranura3 = tirada.nextInt(7) + 1;
+				
+				labelRodillos.setText(("[ " + ranura1 + " ] - [ " + ranura2 + " ] - [ " + ranura3 + " ]"));
+				
+				
+			}
+		});
 		
 		
 		
