@@ -1,6 +1,7 @@
 package jcasino.dominio;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Ruleta extends Juego{
 
@@ -24,13 +25,7 @@ public class Ruleta extends Juego{
 
 	//Llamamos al método Jugar y añadimos la funcionalidad de la Ruleta dentro
 	@Override
-	public double jugar(double cantidadApostada, Jugador jugador) {
-		
-		//Comprobamos que el número elegido por el jugar está en el rango posible
-		if(this.numeroApostado < 0 || this.numeroApostado > 36) {
-			System.out.println("Apuesta Rechaza: Debes elegir un número entre el 0 y el 36");
-			return 0;
-		}
+	public double jugar(double cantidadApostada, Jugador jugador) {	
 		
 		//Comprobamos que el saldo del Jugador llegue a la apuesta mínima
 		if (cantidadApostada < getApuestaMinima()) {
@@ -42,6 +37,19 @@ public class Ruleta extends Juego{
 		if (!jugador.retirarSaldo(cantidadApostada)) {
 			System.out.println("Apuesta Rechazada. Saldo insuficiente");
 			return 0;
+		}
+		
+		//Numero que elije el jugador
+		Scanner sc = new Scanner(System.in);
+		numeroApostado = -1;
+		
+		while (numeroApostado < 0 || numeroApostado > 36){
+			System.out.println("Elije un número entre el 0 y el 36");
+			numeroApostado = sc.nextInt();
+			
+			if(numeroApostado < 0 || numeroApostado > 36) {
+				System.out.println("Apuesta Rechazada: Debes elegir un número válido");
+			}
 		}
 		
 		//Generar número Aleatorio entre el 0 y el 36
