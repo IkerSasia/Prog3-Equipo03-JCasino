@@ -127,7 +127,7 @@ public class VentanaMenuJuegos extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: Aquí pondrás la lógica o ventana para abrir las Slots
 				dispose();
-				VentanaSlot slot = new VentanaSlot();
+				VentanaSlot slot = new VentanaSlot(); // funcionalidad del boton para que nos lleve a la ventanaslot
 				slot.setVisible(true);
 
 

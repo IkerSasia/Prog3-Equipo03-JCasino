@@ -84,7 +84,7 @@ public class VentanaSlot extends JFrame {
 		
 		// ACCIONES DE LOS BOTONES
 		
-		botonVolver.addActionListener(new ActionListener() {
+		botonVolver.addActionListener(new ActionListener() { // el boton volver vuelve al menu de juegos
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
