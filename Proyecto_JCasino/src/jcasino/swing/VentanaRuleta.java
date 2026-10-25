@@ -4,7 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class VentanaRuleta extends JFrame {
 	
@@ -23,6 +25,14 @@ public class VentanaRuleta extends JFrame {
 		
 		setLayout(new BorderLayout()); // Creamos el borderLayout
 		getContentPane().setBackground(colorFondo); // Poner el color de arriba del marco de la ventana del mismo color que el fondo
+		
+		// ---ZONA SUPERIOR: MARCADOR DEL NUMERO---
+		JPanel panelMarcador = new JPanel();
+		panelMarcador.setBackground(colorFondo);
+		panelMarcador.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
+		
+		// Etiqueta para el numero ganador
+		
 		
 		setVisible(true);
 		
