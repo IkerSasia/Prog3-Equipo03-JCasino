@@ -171,6 +171,17 @@ public class VentanaRegistro extends JFrame {
 			}
 		});
 		
+		// Crear Cuenta
+		botonRegistrar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaInicioSesion().setVisible(true);
+				dispose();
+				
+			}
+		});
+		
 		
 		panelSur.add(botonRegistrar);
 		panelSur.add(botonVolver);
