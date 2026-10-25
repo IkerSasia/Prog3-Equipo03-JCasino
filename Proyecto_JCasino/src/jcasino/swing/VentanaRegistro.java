@@ -165,8 +165,8 @@ public class VentanaRegistro extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VentanaInicioSesion ventanaLogin = new VentanaInicioSesion();
-				ventanaLogin.setVisible(true);
-				dispose(); // Accion para volver a la pestaña anterior 
+				ventanaLogin.setVisible(true); // Aparece la ventana de logIn
+				dispose(); // Destruye esta ventana
 				
 			}
 		});

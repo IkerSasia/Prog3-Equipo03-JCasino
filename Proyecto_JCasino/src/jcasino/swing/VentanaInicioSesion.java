@@ -6,6 +6,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -96,6 +98,17 @@ public class VentanaInicioSesion extends JFrame {
 		botonRegistrarse.setBackground(new Color(46, 139, 87));
 		botonRegistrarse.setForeground(Color.WHITE);
 		
+		// Boton registarse nos lleve a la ventana de registrarse
+		botonRegistrarse.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaRegistro ventanaSingUp = new VentanaRegistro();
+				ventanaSingUp.setVisible(true); // Aparece la ventana de log In
+				dispose(); // Destruye la ventana de inicio de sesion 
+				
+			}
+		});
 		
 		panelSur.add(botonInicioSesion);
 		panelSur.add(botonRegistrarse);
