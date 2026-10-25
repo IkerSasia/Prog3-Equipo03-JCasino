@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -124,7 +126,6 @@ public class VentanaRuleta extends JFrame {
         botonVolver.setFocusable(false);
         botonVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
-        
         JButton botonGirar = new JButton("GIRAR RULETA");
         botonGirar.setFont(new Font("Segoe UI", Font.BOLD, 16));
         botonGirar.setBackground(new Color(80, 80, 80)); 
@@ -132,17 +133,21 @@ public class VentanaRuleta extends JFrame {
         botonGirar.setFocusable(false);
         botonGirar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
+        // ACCION DEL BOTON VOLVER
+        botonVolver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaMenuJuegos().setVisible(true);
+				dispose();
+				
+			}
+		});
+        
+        // ACCION DEL BOTON GIRAR
+        botonGirar
         
         
-        
-        
-        
-		
-		
-		
-		
-		
-		
 		
 		add(panelMarcador, BorderLayout.NORTH);
 		add(panelApuestas, BorderLayout.CENTER);
