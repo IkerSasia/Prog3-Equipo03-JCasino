@@ -142,7 +142,18 @@ public class VentanaRegistro extends JFrame {
 		botonRegistrar.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		botonRegistrar.setBackground(new Color(46, 139, 87)); // Verde Casino
 		botonRegistrar.setForeground(Color.WHITE);
-		botonRegistrar.setFocusPainted(false); // Quitar el recuadro que le sale al boton al hacer clic
+		botonRegistrar.setFocusPainted(false); // Quitar el recuadro que le sale al texto del boton al hacer clic
+		
+		JButton botonVolver = new JButton("CREAR CUENTA");
+		botonVolver.setFont(fuenteCajas);
+		botonVolver.setBackground(new Color(200, 200, 200)); // Gris claro
+		botonVolver.setBorderPainted(false);
+		botonVolver.setFocusPainted(false);
+		botonVolver.setContentAreaFilled(false);
+		
+		
+		
+		panelSur.add(botonRegistrar);
 		
 		
 		
@@ -150,6 +161,7 @@ public class VentanaRegistro extends JFrame {
 		
 		// Añadimos los paneles a la ventana y hacemos que se vea
 		add(panelCentro, BorderLayout.CENTER);
+		add(panelSur, BorderLayout.SOUTH);
 		setVisible(true);
 	}
 
