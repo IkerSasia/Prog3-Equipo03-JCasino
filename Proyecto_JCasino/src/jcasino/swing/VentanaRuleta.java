@@ -125,6 +125,14 @@ public class VentanaRuleta extends JFrame {
         botonVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         
+        JButton botonGirar = new JButton("GIRAR RULETA");
+        botonGirar.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        botonGirar.setBackground(new Color(80, 80, 80)); 
+        botonGirar.setForeground(Color.WHITE);
+        botonGirar.setFocusable(false);
+        botonGirar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        
         
         
         
