@@ -49,7 +49,7 @@ public class VentanaRegistro extends JFrame {
 		panelCentro.setBackground(colorFondo); // Aplicar color de Fondo
 		
 		// Nombre 
-		JLabel labelNombre = new JLabel("Nombre real");
+		JLabel labelNombre = new JLabel("Nombre");
 		labelNombre.setAlignmentX(Component.CENTER_ALIGNMENT);
 		labelNombre.setForeground(colorTexto);
 		labelNombre.setFont(fuenteTitulo);
@@ -84,6 +84,10 @@ public class VentanaRegistro extends JFrame {
 		rbMasculino.setBackground(colorFondo);
 		rbFemenino.setForeground(colorTexto);
 		rbFemenino.setBackground(colorFondo);
+		rbMasculino.setFocusPainted(false);
+		rbFemenino.setFocusPainted(false);
+		rbMasculino.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		rbFemenino.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		// Solo poder marcar un boton a la vez
 		ButtonGroup grupoGenero = new ButtonGroup();
