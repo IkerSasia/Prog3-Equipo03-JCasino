@@ -114,6 +114,9 @@ public class VentanaRuleta extends JFrame {
         panelApuestas.add(panelCantidad);
         panelApuestas.add(panelBotonesApuesta);
         
+        // ---ZONA INFERIOR: BOTONES DE ACCIÓN---
+        JPanel panelSur = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 20));
+        
         
         
         
