@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
 
 public class VentanaRuleta extends JFrame {
 	
@@ -52,7 +53,14 @@ public class VentanaRuleta extends JFrame {
 		panelApuestas.setLayout(new BoxLayout(panelApuestas, BoxLayout.Y_AXIS));
 		panelApuestas.setBackground(colorFondo);
 		
-		// Crea
+		// Creamos un borde para el titulo con la zona de apuestas 
+		TitledBorder bordeApuestas = BorderFactory.createTitledBorder(
+				BorderFactory.createLineBorder(Color.GRAY), "Tu Apuesta");
+		bordeApuestas.setTitleColor(Color.LIGHT_GRAY);
+		bordeApuestas.setTitleFont(new Font("Segoe UI", Font.BOLD, 14));
+		panelApuestas.setBorder(BorderFactory.createCompoundBorder(
+				BorderFactory.createEmptyBorder(), // Margen Exterior
+				bordeApuestas));  // Margen interior con el titulo
 		
 		
 		
@@ -61,6 +69,7 @@ public class VentanaRuleta extends JFrame {
 		
 		
 		add(panelMarcador, BorderLayout.NORTH);
+		add(panelApuestas, BorderLayout.CENTER);
 		setVisible(true);
 		
 	}
