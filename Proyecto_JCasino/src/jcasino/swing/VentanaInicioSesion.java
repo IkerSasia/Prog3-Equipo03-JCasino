@@ -89,6 +89,12 @@ public class VentanaInicioSesion extends JFrame {
 		JButton botonInicioSesion = new JButton("Iniciar Sesión");
 		JButton botonRegistarse = new JButton("Registrarse");
 		
+		botonInicioSesion.setBackground(new Color(46, 139, 87));
+		botonInicioSesion.setForeground(Color.WHITE);
+		botonRegistarse.setBackground(new Color(46, 139, 87));
+		botonRegistarse.setForeground(Color.WHITE);
+		
+		
 		panelSur.add(botonInicioSesion);
 		panelSur.add(botonRegistarse);
 		
