@@ -2,9 +2,16 @@ package jcasino.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class VentanaRegistro extends JFrame {
 
@@ -23,6 +30,24 @@ public class VentanaRegistro extends JFrame {
 		Font fuenteCajas = new Font("Segoe UI", Font.PLAIN, 14);
 		
 		setLayout(new BorderLayout());
+		
+		// Creación del Formulario
+		JPanel panelCentro = new JPanel();
+		panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
+		
+		// Creamos un borde al panel para apilar todo en el centro
+		panelCentro.setBorder(BorderFactory.createEmptyBorder(20, 80, 10, 80));
+		panelCentro.setBackground(colorFondo); // Aplicar color de Fondo
+		
+		// Nombre 
+		JLabel labelNombre = new JLabel("Nombre real");
+		labelNombre.setAlignmentX(Component.CENTER_ALIGNMENT);
+		labelNombre.setForeground(colorTexto);
+		labelNombre.setFont(fuenteTitulo);
+		
+		JTextField txtNombre = new JTextField();
+		txtNombre.setMaximumSize(new Dimension(250, 30));
+		txtNombre.setHorizontalAlignment(JTextField.CENTER);
 		
 		
 		
