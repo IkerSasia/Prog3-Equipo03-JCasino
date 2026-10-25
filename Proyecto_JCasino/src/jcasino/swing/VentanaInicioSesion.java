@@ -110,6 +110,15 @@ public class VentanaInicioSesion extends JFrame {
 			}
 		});
 		
+		botonInicioSesion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaMenuJuegos().setVisible(true);
+				dispose();
+			}
+		});
+		
 		panelSur.add(botonInicioSesion);
 		panelSur.add(botonRegistrarse);
 		
