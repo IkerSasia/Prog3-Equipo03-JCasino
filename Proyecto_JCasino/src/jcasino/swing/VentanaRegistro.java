@@ -7,6 +7,8 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -153,7 +155,17 @@ public class VentanaRegistro extends JFrame {
 		botonVolver.setFocusPainted(false);
 		botonVolver.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cambiar la forma del cursor al estar encima del boton
 		
-		
+		// Volver a la ventana anterior
+		botonVolver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaInicioSesion ventanaLogin = new VentanaInicioSesion();
+				ventanaLogin.setVisible(true);
+				dispose();
+				
+			}
+		});
 		
 		
 		panelSur.add(botonRegistrar);
