@@ -9,6 +9,7 @@ import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -76,6 +77,13 @@ public class VentanaRegistro extends JFrame {
 		rbMasculino.setBackground(colorFondo);
 		rbFemenino.setForeground(colorTexto);
 		rbFemenino.setBackground(colorFondo);
+		
+		// Solo poder marcar un boton a la vez
+		ButtonGroup grupoGenero = new ButtonGroup();
+		grupoGenero.add(rbFemenino);
+		grupoGenero.add(rbMasculino);
+		panelGenero.add(rbMasculino);
+		panelGenero.add(rbFemenino);
 		
 		
 		
