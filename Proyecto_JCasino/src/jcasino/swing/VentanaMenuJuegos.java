@@ -113,6 +113,15 @@ public class VentanaMenuJuegos extends JFrame {
 			}
 		});
 		
+		//BOTON SALDO
+		botonSaldo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaSaldo();
+			}
+		});
+		
 		//BOTON RULETA
 		botonRuleta.addActionListener(new ActionListener() {
 			@Override
