@@ -8,6 +8,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
@@ -85,9 +86,36 @@ public class VentanaRegistro extends JFrame {
 		panelGenero.add(rbMasculino);
 		panelGenero.add(rbFemenino);
 		
+		// Usuario
+		JLabel labelUsuario = new JLabel("Nnombre de Usuario");
+		labelUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
+		labelUsuario.setForeground(colorTexto);
+		labelUsuario.setFont(fuenteTitulo);
+		JTextField txtUsuario = new JTextField();
+		txtUsuario.setMaximumSize(new Dimension(250, 30));
+		txtUsuario.setHorizontalAlignment(JTextField.CENTER);
+		
+		
+		// Añadimos todo al panel central
+		panelCentro.add(labelNombre);
+		panelCentro.add(Box.createVerticalStrut(5));
+		panelCentro.add(txtNombre);
+		panelCentro.add(Box.createVerticalStrut(15));
+		
+		panelCentro.add(labelApellidos);
+		panelCentro.add(Box.createVerticalStrut(5));
+		panelCentro.add(txtApellidos);
+		panelCentro.add(Box.createVerticalStrut(15));
+
+		
+		panelCentro.add(labelGenero);
+		panelCentro.add(panelGenero);
+		panelCentro.add(Box.createVerticalStrut(5));
 		
 		
 		
+		// Añadimos los paneles a la ventana y hacemos que se vea
+		add(panelCentro, BorderLayout.CENTER);
 		setVisible(true);
 	}
 
