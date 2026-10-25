@@ -159,7 +159,7 @@ public class VentanaRuleta extends JFrame {
 				// Cambiar el color del marcador segun el numero
 				
 				if (numero == 0) {
-					labelNumeroGanador.setBackground(new Color(46, 139, 87)); // Si toca el 0, es verde
+					labelNumeroGanador.setBackground(Color.GREEN); // Si toca el 0, es verde
 				}
 				else if (numero % 2 == 0) {
 					labelNumeroGanador.setBackground(Color.RED); // Si toca par, es rojo 
