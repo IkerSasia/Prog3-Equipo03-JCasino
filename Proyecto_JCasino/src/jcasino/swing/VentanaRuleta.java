@@ -87,10 +87,17 @@ public class VentanaRuleta extends JFrame {
         
         // Boton rojo
         JButton botonApostarRojo = new JButton("ROJO");
-        botonApostarRojo.setBackground(new Color(220, 20, 60)); // Rojo casino
+        botonApostarRojo.setBackground(new Color(220, 20, 60)); // color rojo
         botonApostarRojo.setForeground(Color.WHITE);
         botonApostarRojo.setFocusable(false);
         botonApostarRojo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        // Boton negro
+        JButton botonApostarNegro = new JButton("NEGRO");
+        botonApostarNegro.setBackground(Color.BLACK);
+        botonApostarNegro.setForeground(Color.WHITE);
+        botonApostarNegro.setFocusable(false);
+        botonApostarNegro.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         
         
