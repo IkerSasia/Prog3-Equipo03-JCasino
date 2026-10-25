@@ -42,7 +42,6 @@ public class VentanaMenuJuegos extends JFrame {
 		add(panelBienvenida, BorderLayout.NORTH);
 		
 		
-		
 		//Botones para cada juego, Saldo y Cerrar Sesion
 		JButton botonBlackJack = new JButton("BlackJack");
 		JButton botonRuleta = new JButton("Ruleta");
@@ -131,6 +130,7 @@ public class VentanaMenuJuegos extends JFrame {
 			}
 		});
 		
+		// Boton de cerrar sesion que vuelva a la ventana de inicio de sesion 
 		botonCerrarSesion.addActionListener(new ActionListener() {
 			
 			@Override
