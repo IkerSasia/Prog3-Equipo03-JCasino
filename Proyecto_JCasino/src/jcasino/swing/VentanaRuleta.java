@@ -122,6 +122,7 @@ public class VentanaRuleta extends JFrame {
         panelSur.setBackground(colorFondo);
         
         JButton botonVolver = new JButton("SALIR");
+        botonVolver.setFont(new Font("Segoe UI", Font.BOLD, 16));
         botonVolver.setBackground(new Color(80, 80, 80));
         botonVolver.setForeground(Color.WHITE);
         botonVolver.setFocusable(false);
@@ -155,11 +156,26 @@ public class VentanaRuleta extends JFrame {
 				
 				labelNumeroGanador.setText(String.valueOf(numero)); // Ponemos en el cuadrado el numero
 				
+				// Cambiar el color del marcador segun el numero
+				
+				if (numero == 0) {
+					labelNumeroGanador.setBackground(new Color(46, 139, 87)); // Si toca el 0, es verde
+				}
+				else if (numero % 2 == 0) {
+					labelNumeroGanador.setBackground(Color.RED); // Si toca par, es rojo 
+				}
+				else {
+					labelNumeroGanador.setBackground(Color.BLACK); // El resto de numeros son negro
+				}
+				
 			}
 		});
         
+        panelSur.add(botonVolver);
+        panelSur.add(botonGirar);
         
-		
+        
+		// Añadimos todo a la ventana principal
 		add(panelMarcador, BorderLayout.NORTH);
 		add(panelApuestas, BorderLayout.CENTER);
 		add(panelSur, BorderLayout.SOUTH);
