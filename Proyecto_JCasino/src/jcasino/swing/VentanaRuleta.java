@@ -6,6 +6,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Panel;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -105,6 +106,13 @@ public class VentanaRuleta extends JFrame {
         botonApostarVerde.setForeground(Color.WHITE);
         botonApostarVerde.setFocusable(false);
         botonApostarVerde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        panelBotonesApuesta.add(botonApostarRojo);
+        panelBotonesApuesta.add(botonApostarNegro);
+        panelBotonesApuesta.add(botonApostarVerde);
+        
+        panelApuestas.add(panelCantidad);
+        panelApuestas.add(panelBotonesApuesta);
         
         
         
