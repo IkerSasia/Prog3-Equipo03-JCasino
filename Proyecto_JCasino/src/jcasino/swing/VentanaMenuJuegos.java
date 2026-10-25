@@ -12,12 +12,24 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import jcasino.dominio.Jugador;
 
 public class VentanaMenuJuegos extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public VentanaMenuJuegos () {
+	
+	
+	//Para abrir el menu de prueba
+	public VentanaMenuJuegos() {
+		this(new Jugador(
+				"prueba", "Jugador", "Prueba", 20, "", "", "", "1234"
+		));
+	}
+	
+	
+	//Para abrir el menu con un jugador que ya tenemos
+	public VentanaMenuJuegos (Jugador jugador) {		
 		setTitle("JCasino - Menu Principal");
 		setSize(400, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -118,7 +130,7 @@ public class VentanaMenuJuegos extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaSaldo();
+				new VentanaSaldo(jugador);
 				dispose();
 			}
 		});
