@@ -126,7 +126,12 @@ public class VentanaMenuJuegos extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO: Aquí pondrás la lógica o ventana para abrir las Slots
-				System.out.println("Abriendo Slot...");
+				dispose();
+				VentanaSlot slot = new VentanaSlot(); // funcionalidad del boton para que nos lleve a la ventanaslot
+				slot.setVisible(true);
+
+
+				
 			}
 		});
 		

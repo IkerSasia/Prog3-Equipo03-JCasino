@@ -3,6 +3,8 @@ package jcasino.swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -79,7 +81,27 @@ public class VentanaSlot extends JFrame {
 		
 		add(panelInferior, BorderLayout.SOUTH);
 		
+		
+		// ACCIONES DE LOS BOTONES
+		
+		botonVolver.addActionListener(new ActionListener() { // el boton volver vuelve al menu de juegos
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				VentanaMenuJuegos menu = new VentanaMenuJuegos();
+				menu.setVisible(true);
+				
+			}
+		} );
+		
+		
+		
+		
+		
+		
 		setVisible(true);
+		
 		
 	}
 	public static void main(String[] args) {
