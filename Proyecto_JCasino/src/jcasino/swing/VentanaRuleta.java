@@ -99,6 +99,14 @@ public class VentanaRuleta extends JFrame {
         botonApostarNegro.setFocusable(false);
         botonApostarNegro.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
+        // Boton Verde
+        JButton botonApostarVerde = new JButton("VERDE (0)");
+        botonApostarVerde.setBackground(new Color(0, 100, 0)); // Un verde más oscuro que el fondo
+        botonApostarVerde.setForeground(Color.WHITE);
+        botonApostarVerde.setFocusable(false);
+        botonApostarVerde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        
         
         
         
