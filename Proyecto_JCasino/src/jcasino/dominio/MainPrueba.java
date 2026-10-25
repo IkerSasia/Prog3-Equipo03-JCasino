@@ -12,40 +12,38 @@ public class MainPrueba {
 		System.out.println();
 		
 		//Hacemos la Slot
-		Slot pruebaSlot = new Slot("Slot Prueba", 2.0);
-		
-		for(int i = 1; i <= 5; i++){
-			System.out.println("--- TIRADA "+i+" ---");
-			pruebaSlot.jugar(2.0, jugador1);
-			System.out.println("Saldo actual: "+jugador1.getSaldo()+"€");
-			System.out.println();
-		}
+//		Slot pruebaSlot = new Slot("Slot Prueba", 2.0);
+//		
+//		for(int i = 1; i <= 5; i++){
+//			System.out.println("--- TIRADA "+i+" ---");
+//			pruebaSlot.jugar(2.0, jugador1);
+//			System.out.println("Saldo actual: "+jugador1.getSaldo()+"€");
+//			System.out.println();
+//		}
 		
 		//Hacemos la Ruleta
 		Ruleta pruebaRuleta = new Ruleta("Ruleta Prueba", 5.0);
-			int tirada = 1;	
-		while(jugador1.getSaldo()<300 && jugador1.getSaldo()>0) {
-			
-			System.out.println("--- TIRADA "+tirada+"---");
-			pruebaRuleta.setNumeroApostado(22);
-			System.out.println("El numero elegido por el Jugador es: 22");
+		for(int i = 1; i <= 10; i++) {
+			System.out.println("--- TIRADA "+i+" ---");
+			System.out.println();
 			pruebaRuleta.jugar(5.0, jugador1);
 			System.out.println("Saldo actual: "+jugador1.getSaldo()+"€");
 			System.out.println();
-
-			tirada = tirada +1;
-			}
-		
-		//Hacemos el Blackjack
-		Blackjack pruebaBlackjack = new Blackjack("Blackjack prueba", 2.0);
-		
-		for(int i = 1; i <= 10; i++) {
-			System.out.println("--- REPARTO "+i+" de CARTAS ---");
-			System.out.println();
-			pruebaBlackjack.jugar(2.0, jugador1);
-			System.out.println("Saldo actual: "+jugador1.getSaldo()+"€");
 			System.out.println();
 		}
+		
+		
+		//Hacemos el Blackjack
+//		Blackjack pruebaBlackjack = new Blackjack("Blackjack prueba", 2.0);
+//		
+//		for(int i = 1; i <= 10; i++) {
+//			System.out.println("--- REPARTO "+i+" de CARTAS ---");
+//			System.out.println();
+//			pruebaBlackjack.jugar(2.0, jugador1);
+//			System.out.println("Saldo actual: "+jugador1.getSaldo()+"€");
+//			System.out.println();
+//			System.out.println();
+//		}
 		
 		
 		

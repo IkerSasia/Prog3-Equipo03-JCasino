@@ -1,6 +1,7 @@
 package jcasino.dominio;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Blackjack extends Juego{
 	
@@ -32,14 +33,47 @@ public class Blackjack extends Juego{
 			return 0;
 		}
 		
-		//Asignamos las cartas al Crupier y al Jugador
+		//Asignamos las 2 primeras cartas al Crupier y al Jugador
 		int puntosJugador = sacarCarta() + sacarCarta();
 		int puntosCrupier = sacarCarta() + sacarCarta();
 		
 		System.out.println("Tus cartas suman: "+puntosJugador);
 		System.out.println("Las cartas del crupies suman: "+puntosCrupier);
 		
+		//Turno del Jugador: Si no está satisfecho con sus cartas pide más
+		Scanner sc = new Scanner(System.in);
 		
+		while(puntosJugador < 21) {
+			System.out.println("¿Quieres pedir una carta (P) o te plantas (S)?");
+			String decision = sc.nextLine().toUpperCase();
+			
+			if (decision.equals("P")){
+				int nuevaCarta = sacarCarta();
+				puntosJugador += nuevaCarta;
+				System.out.println("Te ha salido un: "+nuevaCarta);
+				System.out.println("Ahora tienes: "+puntosJugador);
+			}else if(decision.equals("S")){
+				System.out.println("Te plantas con "+ puntosJugador+".");
+				break;
+			}else {
+				System.out.println("Opción no valida. Escribe P o S.");
+			}
+		}
+		
+		//Turno del Crupier: Si el Crupier no llega al mínimo de 17 puntos pide más cartas
+		if (puntosJugador <= 21) {
+			System.out.println("Turno del crupier.");
+			System.out.println("Puntuación actual: "+puntosCrupier);
+			while (puntosCrupier < 17) {
+				int nuevaCarta = sacarCarta();
+				puntosCrupier += nuevaCarta;
+				System.out.println("El crupier pide carta ("+nuevaCarta+").");
+				System.out.println("Total del crupier: "+puntosCrupier);
+			}
+		}
+		
+		System.out.println();
+		System.out.println("---RESULTADO FINAL---");
 		if (puntosJugador == 21 && puntosCrupier < 21) {
 			//Blackjack
 			double premio = cantidadApostada * 2.5;
