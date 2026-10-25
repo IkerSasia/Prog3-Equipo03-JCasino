@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
 
@@ -46,10 +47,16 @@ public class VentanaSaldo extends JFrame{
 		botonRecargar.setFont(new Font("Sogoe UI", Font.PLAIN, 14));
 		botonRecargar.setFocusPainted(false);
 		
+		JButton botonRetirar = new JButton("Retirar");
+		botonRetirar.setBackground(colorBoton);
+		botonRetirar.setForeground(Color.WHITE);
+		botonRetirar.setFont(new Font("Sogoe UI", Font.PLAIN, 14));
+		botonRetirar.setFocusPainted(false);
 		
 		panelRecarga.add(labelCantidad);
 		panelRecarga.add(txtCantidad);
 		panelRecarga.add(botonRecargar);
+		panelRecarga.add(botonRetirar);
 		
 		
 		
@@ -112,6 +119,60 @@ public class VentanaSaldo extends JFrame{
 						}
 					} catch (NumberFormatException ex) {
 						
+						JOptionPane.showMessageDialog(VentanaSaldo.this, "Escribe un numero. Para los decimales usa punto");
+					}
+				}
+			}
+		});
+		
+		botonRetirar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String texto = txtCantidad.getText().trim();
+				
+				if (texto.isEmpty()) {
+					JOptionPane.showMessageDialog(VentanaSaldo.this, "Escribe cuanto quieres retirar");
+					
+				}else {
+					
+					try {
+						double cantidad = Double.parseDouble(texto);
+						
+						if (cantidad <= 0) {
+							JOptionPane.showMessageDialog(VentanaSaldo.this, "Introduce una cantidad valida mayor que cero");
+						} else if (cantidad > jugador.getSaldo()) {
+							JOptionPane.showMessageDialog(VentanaSaldo.this, "No tienes saldo suficiente");
+						} else {
+							JPasswordField campoContrasenna = new JPasswordField();
+							
+							int respuesta = JOptionPane.showConfirmDialog(VentanaSaldo.this, campoContrasenna, "Introduce tu contraseña", JOptionPane.OK_CANCEL_OPTION);
+							
+							if (respuesta == JOptionPane.OK_OPTION) {
+								String contrasenna = new String(campoContrasenna.getPassword());
+								
+								if (contrasenna.equals(jugador.getContrasenna())) {
+									boolean retirado = jugador.retirarSaldo(cantidad);
+									
+									if (retirado) {
+										labelSaldo.setText("Saldo actual: " + jugador.getSaldo() + " €");
+										txtCantidad.setText("");
+										
+										JOptionPane.showMessageDialog(VentanaSaldo.this, "Has retirado " + cantidad + " €");
+										
+									} else {
+										JOptionPane.showMessageDialog(VentanaSaldo.this, "No se ha podido retirar esa cantidad");
+									}
+								} else {
+									JOptionPane.showMessageDialog(VentanaSaldo.this, "La contraseña es incorrecta");
+								}
+							}
+						}
+						
+			
+						
+					} catch (NumberFormatException ex) {
 						JOptionPane.showMessageDialog(VentanaSaldo.this, "Escribe un numero. Para los decimales usa punto");
 					}
 				}
