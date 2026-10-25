@@ -18,16 +18,17 @@ public class VentanaMenuJuegos extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	public VentanaMenuJuegos () {
-		setTitle("Menu Principal");
-		setSize(400, 300);
+		setTitle("JCasino - Menu Principal");
+		setSize(400, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); 
 		
-		//Colores y fuentes para la estetica del menu
+		//Colores y fuentes para la misma estetica de la ventana Inicio Sesion
 		Color colorFondo = new Color(30, 30, 30);
 		Color colorTexto = Color.WHITE;
 		Color colorBoton = new Color(50, 50, 50);
 		Color colorBotonRojo = new Color(180, 50, 50); // Para cerrar sesión
+		Color colorBotonSaldo = new Color(40, 120, 80);
 		Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 16);
 		Font fuenteBotones = new Font("Segoe UI", Font.PLAIN, 14);
 		
@@ -40,10 +41,13 @@ public class VentanaMenuJuegos extends JFrame {
 		panelBienvenida.add(labelTitulo);
 		add(panelBienvenida, BorderLayout.NORTH);
 		
-		//Botones para cada juego
+		
+		
+		//Botones para cada juego, Saldo y Cerrar Sesion
 		JButton botonBlackJack = new JButton("BlackJack");
 		JButton botonRuleta = new JButton("Ruleta");
 		JButton botonSlots = new JButton("Slot");
+		JButton botonSaldo = new JButton("Gestión de Saldo");
 		JButton botonCerrarSesion = new JButton("Cerrar Sesion");
 		
 		//Aplicamos el mismo estilo a los botones 
@@ -62,6 +66,13 @@ public class VentanaMenuJuegos extends JFrame {
 		botonSlots.setFont(fuenteBotones);
 		botonSlots.setFocusPainted(false);
 		
+		botonSaldo.setBackground(colorBotonSaldo);
+		botonSaldo.setForeground(colorTexto);
+		botonSaldo.setFont(fuenteBotones);
+		botonSaldo.setFocusPainted(false);
+		
+		botonCerrarSesion.setBackground(colorBotonRojo);
+		
 		
 		
 		setLayout(new BorderLayout(10,10)); // Configuramos el layout general de la ventana
@@ -75,13 +86,18 @@ public class VentanaMenuJuegos extends JFrame {
 		panelJuegos.add(botonBlackJack);
 		panelJuegos.add(botonRuleta);
 		panelJuegos.add(botonSlots);
+		panelJuegos.add(botonSaldo);
+		
 		
 		
 		add(panelJuegos, BorderLayout.CENTER); // Añadir el panel de juegos al centro de la ventana
 		
 		//Panel para el boton de cerrar sesion
 		JPanel panelCerrarSesion = new JPanel();
+		panelCerrarSesion.setBackground(colorFondo);
+		panelCerrarSesion.setBorder(BorderFactory.createEmptyBorder(0, 0, 15, 0));
 		panelCerrarSesion.add(botonCerrarSesion);
+		panelCerrarSesion.add(botonSaldo);
 		add(panelCerrarSesion, BorderLayout.SOUTH);
 		
 		
