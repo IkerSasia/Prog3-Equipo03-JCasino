@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -71,6 +72,7 @@ public class VentanaRegistro extends JFrame {
 		
 		JPanel panelGenero = new JPanel(new FlowLayout());
 		panelGenero.setBackground(colorFondo);
+		panelGenero.setMaximumSize(new Dimension(250, 40));
 		JRadioButton rbMasculino = new JRadioButton("Masculino");
 		JRadioButton rbFemenino = new JRadioButton("Femenino");
 		
@@ -130,6 +132,17 @@ public class VentanaRegistro extends JFrame {
 		panelCentro.add(labelContrasena);
 		panelCentro.add(Box.createVerticalStrut(5));
 		panelCentro.add(txtContrasena);
+		
+		
+		// ZONA INFERIOR (REGISTRARSE Y VOLVER)
+		JPanel panelSur = new JPanel(new FlowLayout());
+		panelSur.setBackground(colorFondo);
+		
+		JButton botonRegistrar = new JButton("CREAR CUENTA");
+		botonRegistrar.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		botonRegistrar.setBackground(new Color(46, 139, 87)); // Verde Casino
+		botonRegistrar.setForeground(Color.WHITE);
+		botonRegistrar.setFocusPainted(false); // Quitar el recuadro que le sale al boton al hacer clic
 		
 		
 		
