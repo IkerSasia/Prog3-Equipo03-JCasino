@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,53 +23,82 @@ public class ventanaBlackjack extends JFrame{
 		
 		Color colorFondo = new Color(46, 139, 87);
 		
-		//Parte de arriba, zona del crupier
-		JLabel labelCrupier = new JLabel("Crupier", SwingConstants.CENTER);
-		labelCrupier.setOpaque(true);
-		labelCrupier.setBackground(colorFondo);
+		
+		//Panel Principal: Ocupa toda la ventana y nos da los márgenes
+		JPanel panelPrincipal = new JPanel();
+		panelPrincipal.setLayout(new BorderLayout());
+		panelPrincipal.setBackground(colorFondo);
+		// EmptyBorder(Arriba, Izquierda, Abajo, Derecha). Le damos 40px de margen lateral
+		panelPrincipal.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40)); 
+			
+		
+		//Panel del Juego: zona para el crupier, el jugador y el las cartas
+		JPanel panelJuego = new JPanel();
+		panelJuego.setLayout(new BorderLayout());
+		panelJuego.setBackground(colorFondo);
+		// Le pintamos la línea negra alrededor a todo este bloque
+		panelJuego.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3)); 
+				
+				
+		//Zona del Crupier
+		JLabel labelCrupier = new JLabel("CRUPIER", SwingConstants.CENTER);
 		labelCrupier.setForeground(Color.WHITE);
 		labelCrupier.setFont(new Font("Arial", Font.BOLD, 24));
-		add(labelCrupier, BorderLayout.NORTH);
 		
-		//Parte Central, zona del juego
-		JLabel labelCentral = new JLabel("Mesa de juego", SwingConstants.CENTER);
-		labelCentral.setOpaque(true);
-		labelCentral.setBackground(colorFondo);
+		labelCrupier.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); //Margen para que no se pegue a la línea negra
+		panelJuego.add(labelCrupier, BorderLayout.NORTH);
+				
+				
+		//Zona para las cartas
+		JLabel labelCentral = new JLabel("ZONA DE JUEGO", SwingConstants.CENTER);
 		labelCentral.setForeground(Color.WHITE);
 		labelCentral.setFont(new Font("Arial", Font.BOLD, 24));
-		add(labelCentral, BorderLayout.CENTER);
-		
-		
-		
-		//Parte de abajo
-		JPanel panelSur = new JPanel();
-		panelSur.setLayout(new BorderLayout());
-		
-		//Parte de abajo, zona del jugador
-		JLabel labelJugador = new JLabel("Jugador", SwingConstants.CENTER);
-		labelJugador.setOpaque(true);
-		labelJugador.setBackground(colorFondo);
+		panelJuego.add(labelCentral, BorderLayout.CENTER);
+				
+				
+		//Zona para el Jugador
+		JLabel labelJugador = new JLabel("JUGADOR", SwingConstants.CENTER);
 		labelJugador.setForeground(Color.WHITE);
 		labelJugador.setFont(new Font("Arial", Font.BOLD, 24));
 		
+		labelJugador.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+		panelJuego.add(labelJugador, BorderLayout.SOUTH);
+				
+				
+		// Añadimos el crupier, el jugador y la zona de juego al centro de la interfaz
+		panelPrincipal.add(panelJuego, BorderLayout.CENTER);
+				
+				
+		// Panel de abajo, para los botones
 		JPanel panelBotones = new JPanel();
 		panelBotones.setBackground(colorFondo);
-		
+		panelBotones.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0)); // Margén con la parte de arriba
+				
 		JButton botonJugar = new JButton("Jugar");
-		JButton botonPedir = new JButton("Pedir carta");
-		JButton botonSalir = new JButton("Salir");
+		botonJugar.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		botonJugar.setBackground(Color.yellow);
+		botonJugar.setForeground(Color.black);
 		
+		JButton botonPedir = new JButton("Pedir carta");
+		botonPedir.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		botonPedir.setBackground(Color.blue);
+		botonPedir.setForeground(Color.white);
+		
+		JButton botonSalir = new JButton("Salir");
+		botonSalir.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		botonSalir.setBackground(Color.red);
+		botonSalir.setForeground(Color.white);
+				
 		panelBotones.add(botonJugar);
 		panelBotones.add(botonPedir);
 		panelBotones.add(botonSalir);
-		
-		panelSur.add(labelJugador, BorderLayout.CENTER);
-		panelSur.add(panelBotones, BorderLayout.SOUTH);
-		
-		add(panelSur, BorderLayout.SOUTH);
-		
-		
-		
+				
+		// Añadimos los botones a la parte sur del panel principal
+		panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
+				
+				
+		// Finalmente, añadimos el panel principal a la ventana
+		add(panelPrincipal);
 		
 		setVisible(true);
 	}
