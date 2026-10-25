@@ -2,11 +2,14 @@ package jcasino.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class VentanaRuleta extends JFrame {
 	
@@ -32,6 +35,15 @@ public class VentanaRuleta extends JFrame {
 		panelMarcador.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
 		
 		// Etiqueta para el numero ganador
+		JLabel labelNumeroGanador = new JLabel("?");
+		labelNumeroGanador.setFont(new Font("Segoe UI", Font.BOLD, 80));
+		labelNumeroGanador.setForeground(Color.WHITE);
+		labelNumeroGanador.setOpaque(true); // Lo ponemos para que el fondo del texto se pinte7
+		labelNumeroGanador.setBackground(Color.GRAY);
+		labelNumeroGanador.setHorizontalAlignment(SwingConstants.CENTER);
+		labelNumeroGanador.setPreferredSize(new Dimension(150, 150)); // Hacemos un cuadrado grande para mostrar el numero
+		
+		panelMarcador.add(labelNumeroGanador);
 		
 		
 		setVisible(true);
