@@ -2,12 +2,14 @@ package jcasino.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -77,6 +79,22 @@ public class VentanaRuleta extends JFrame {
 		
 		panelCantidad.add(labelCantidad);
 		panelCantidad.add(txtCantidad);
+		
+		
+		// Fila 2: Botones de seleccion de color
+		JPanel panelBotonesApuesta = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        panelBotonesApuesta.setBackground(colorFondo);
+        
+        // Boton rojo
+        JButton botonApostarRojo = new JButton("ROJO");
+        botonApostarRojo.setBackground(new Color(220, 20, 60)); // Rojo casino
+        botonApostarRojo.setForeground(Color.WHITE);
+        botonApostarRojo.setFocusable(false);
+        botonApostarRojo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        
+        
+        
 		
 		
 		
