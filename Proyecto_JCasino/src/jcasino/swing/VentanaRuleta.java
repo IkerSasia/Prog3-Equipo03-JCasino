@@ -7,6 +7,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -73,7 +76,7 @@ public class VentanaRuleta extends JFrame {
 		// Fila 1: Cantidad a apostar 
 		JPanel panelCantidad = new JPanel(new FlowLayout());
 		panelCantidad.setBackground(colorFondo);
-		JLabel labelCantidad = new JLabel("Cantidad (€):");
+		JLabel labelCantidad = new JLabel("Cantidad a apostar(€):");
 		labelCantidad.setForeground(colorTexto);
 		labelCantidad.setFont(fuenteNormal);
 		JTextField txtCantidad = new JTextField(10); // Ancho de columna de 10
@@ -116,20 +119,66 @@ public class VentanaRuleta extends JFrame {
         
         // ---ZONA INFERIOR: BOTONES DE ACCIÓN---
         JPanel panelSur = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 20));
+        panelSur.setBackground(colorFondo);
+        
+        JButton botonVolver = new JButton("SALIR");
+        botonVolver.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        botonVolver.setBackground(new Color(80, 80, 80));
+        botonVolver.setForeground(Color.WHITE);
+        botonVolver.setFocusable(false);
+        botonVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        JButton botonGirar = new JButton("GIRAR RULETA");
+        botonGirar.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        botonGirar.setBackground(new Color(80, 80, 80)); 
+        botonGirar.setForeground(Color.WHITE);
+        botonGirar.setFocusable(false);
+        botonGirar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        // ACCION DEL BOTON VOLVER
+        botonVolver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaMenuJuegos().setVisible(true);
+				dispose();
+				
+			}
+		});
+        
+        // ACCION DEL BOTON GIRAR
+        botonGirar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Random numRandom = new Random();
+				int numero = numRandom.nextInt(37); // Genera un numero random del 0 al 36
+				
+				labelNumeroGanador.setText(String.valueOf(numero)); // Ponemos en el cuadrado el numero
+				
+				// Cambiar el color del marcador segun el numero
+				
+				if (numero == 0) {
+					labelNumeroGanador.setBackground(Color.GREEN); // Si toca el 0, es verde
+				}
+				else if (numero % 2 == 0) {
+					labelNumeroGanador.setBackground(Color.RED); // Si toca par, es rojo 
+				}
+				else {
+					labelNumeroGanador.setBackground(Color.BLACK); // El resto de numeros son negro
+				}
+				
+			}
+		});
+        
+        panelSur.add(botonVolver);
+        panelSur.add(botonGirar);
         
         
-        
-        
-        
-		
-		
-		
-		
-		
-		
-		
+		// Añadimos todo a la ventana principal
 		add(panelMarcador, BorderLayout.NORTH);
 		add(panelApuestas, BorderLayout.CENTER);
+		add(panelSur, BorderLayout.SOUTH);
 		setVisible(true);
 		
 	}
