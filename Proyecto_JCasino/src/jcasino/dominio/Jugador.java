@@ -3,6 +3,7 @@ package jcasino.dominio;
 public class Jugador extends Usuario{
 
 	private double saldo;
+	private String dni;
 	
 	public Jugador(String nombreUsuario, String nombre, String apellidos, int edad, String genero, String telefono,
 			String correo, String contrasenna) {
@@ -12,7 +13,7 @@ public class Jugador extends Usuario{
 	
 	@Override
 	public String toString() {
-		return super.toString() + "Jugador [saldo=" + saldo + "]";
+		return super.toString() + "Jugador [saldo=" + saldo + ", DNI="+ dni +"]";
 	}
 	
 	public double getSaldo() {
@@ -21,6 +22,14 @@ public class Jugador extends Usuario{
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
+	
+	public String getDni() {
+		return dni;
+	}
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+	
 	
 	// ---MÉTODOS PARA GESTIONAR EL SALDO---
 
@@ -39,5 +48,6 @@ public class Jugador extends Usuario{
 		}
 			return false; // Transacción rechazada si la cantidad solicitada supera el saldo actual
 	}
+
 	
 }
