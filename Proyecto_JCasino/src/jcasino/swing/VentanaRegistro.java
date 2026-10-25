@@ -3,6 +3,7 @@ package jcasino.swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -143,12 +144,14 @@ public class VentanaRegistro extends JFrame {
 		botonRegistrar.setBackground(new Color(46, 139, 87)); // Verde Casino
 		botonRegistrar.setForeground(Color.WHITE);
 		botonRegistrar.setFocusPainted(false); // Quitar el recuadro que le sale al texto del boton al hacer clic
+		botonRegistrar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 		JButton botonVolver = new JButton("Volver");
 		botonVolver.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		botonVolver.setBackground(new Color(80, 80, 80)); // Gris
+		botonVolver.setBackground(new Color(46, 139, 87)); 
 		botonVolver.setForeground(Color.WHITE);
 		botonVolver.setFocusPainted(false);
+		botonVolver.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cambiar la forma del cursor al estar encima del boton
 		
 		
 		
