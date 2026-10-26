@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class VentanaSlot extends JFrame {
 	
@@ -46,6 +47,7 @@ public class VentanaSlot extends JFrame {
 		
 		add(panelSuperior, BorderLayout.NORTH);
 		
+		
 		//PANEL CENTRAL - RODILLOS 
 		JPanel panelCentro = new JPanel();
 		panelCentro.setBackground(colorFondo);
@@ -60,6 +62,25 @@ public class VentanaSlot extends JFrame {
 		panelCentro.add(labelRodillos, BorderLayout.CENTER);
 		add(panelCentro, BorderLayout.CENTER);
 		
+		//Sub-panel para introducir la cantidad de apuesta
+		
+		JPanel panelApuesta = new  JPanel();
+		panelApuesta.setBackground(colorFondo);
+		JLabel labelApuesta = new JLabel("Cantidad a apostar (€):");
+		labelApuesta.setForeground(colorTexto);
+		labelApuesta.setFont(fuenteBotones);
+		
+		//Creamos un jttext para introducir la cantidad de apuesta deseada
+		JTextField txtApuesta = new JTextField("10.0", 6);
+		txtApuesta.setFont(fuenteBotones);
+		
+		//Añadimos todo al panel
+		panelApuesta.add(labelApuesta);
+		panelApuesta.add(txtApuesta);
+		panelCentro.add(panelApuesta, BorderLayout.NORTH);
+		
+	
+		
 		//PANEL INFERIOR - BOTON DE GIRAR Y BOTON DE VOLVER
 		JPanel panelInferior = new JPanel();
 		panelInferior.setBackground(colorFondo);
@@ -68,6 +89,7 @@ public class VentanaSlot extends JFrame {
 		JButton botonGirar = new JButton("Girar Slot");
 		JButton botonVolver = new JButton("Volver al Menú");
 		
+		//Aplicamos el mismo diseño de colores a los botones
 		botonGirar.setBackground(colorBotonAccion);
 		botonGirar.setForeground(colorTexto);
 		botonGirar.setFont(fuenteBotones);
@@ -82,6 +104,9 @@ public class VentanaSlot extends JFrame {
 		panelInferior.add(botonVolver);
 		
 		add(panelInferior, BorderLayout.SOUTH);
+		
+		
+		
 		
 		
 		// ACCIONES DE LOS BOTONES
