@@ -3,6 +3,8 @@ package jcasino.swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -78,16 +80,19 @@ public class ventanaBlackjack extends JFrame{
 		botonJugar.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		botonJugar.setBackground(Color.yellow);
 		botonJugar.setForeground(Color.black);
+		botonJugar.setFocusable(false);
 		
 		JButton botonPedir = new JButton("Pedir carta");
 		botonPedir.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		botonPedir.setBackground(Color.blue);
 		botonPedir.setForeground(Color.white);
+		botonPedir.setFocusable(false);
 		
 		JButton botonSalir = new JButton("Salir");
 		botonSalir.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		botonSalir.setBackground(Color.red);
 		botonSalir.setForeground(Color.white);
+		botonSalir.setFocusable(false);
 				
 		panelBotones.add(botonJugar);
 		panelBotones.add(botonPedir);
@@ -99,6 +104,23 @@ public class ventanaBlackjack extends JFrame{
 				
 		// Finalmente, añadimos el panel principal a la ventana
 		add(panelPrincipal);
+		
+		
+		
+		
+		
+		
+		
+		botonSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				VentanaMenuJuegos volver = new VentanaMenuJuegos();
+				volver.setVisible(true);
+				
+			}
+		});
 		
 		setVisible(true);
 	}

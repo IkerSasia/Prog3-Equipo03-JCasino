@@ -86,7 +86,7 @@ public class VentanaSlot extends JFrame {
 		
 		// ACCIONES DE LOS BOTONES
 		
-		botonVolver.addActionListener(new ActionListener() { // el boton volver vuelve al menu de juegos
+		botonVolver.addActionListener(new ActionListener() { // el boton "volver" vuelve a la ventana de menu de juegos
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -97,17 +97,22 @@ public class VentanaSlot extends JFrame {
 			}
 		} );
 		
+		//Programamos la funcionalidad del boton Girar
+		
 		botonGirar.addActionListener(new ActionListener() {
 			
 			@Override
+			//Colocamos el valor aleatorio a las 3 ranuras de la Slot
 			public void actionPerformed(ActionEvent e) {
 				Random tirada = new Random();
 				int ranura1 = tirada.nextInt(7) + 1;
 				int ranura2 = tirada.nextInt(7) + 1;
 				int ranura3 = tirada.nextInt(7) + 1;
 				
+				// Mostrar el resultado en la interfaz
 				labelRodillos.setText(("[ " + ranura1 + " ] - [ " + ranura2 + " ] - [ " + ranura3 + " ]"));
 				
+				// Comprobaciones del premio igual que en la clase Slot
 				if (ranura1 == 7 && ranura2 == 7 && ranura3 == 7) {
 					JOptionPane.showMessageDialog(VentanaSlot.this, "¡JACKPOT! Has ganado el premio gordo.");
 				} else if (ranura1 == ranura2 && ranura2 == ranura3) {
@@ -115,7 +120,9 @@ public class VentanaSlot extends JFrame {
 				}
 				
 			}
+			
 		});
+	
 		
 		
 		
