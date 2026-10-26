@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,6 +17,17 @@ import javax.swing.SwingConstants;
 public class ventanaBlackjack extends JFrame{
 
 	private static final long serialVersionUID = 1L;
+	
+	
+	private int puntosJugador = 0;
+	private int puntosCrupier = 0;
+	private Random cartas = new Random();
+	
+	// Generador de cartas del 1 al 11
+	private int sacarCarta() {
+		return cartas.nextInt(11) + 1;
+	}
+	
 	
 	public ventanaBlackjack(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
@@ -76,27 +88,97 @@ public class ventanaBlackjack extends JFrame{
 		panelBotones.setBackground(colorFondo);
 		panelBotones.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0)); // Margén con la parte de arriba
 				
-		JButton botonJugar = new JButton("Jugar");
+		JButton botonJugar = new JButton("JUGAR");
 		botonJugar.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		botonJugar.setBackground(new Color(80, 80, 80));
 		botonJugar.setForeground(Color.white);
 		botonJugar.setFocusable(false);
 		
-		JButton botonPedir = new JButton("Pedir carta");
+		JButton botonPlantarse = new JButton("PLANTARSE");
+		botonPlantarse.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		botonPlantarse.setBackground(new Color(80, 80, 80));
+		botonPlantarse.setForeground(Color.white);
+		botonPlantarse.setFocusable(false);
+		
+		JButton botonPedir = new JButton("PEDIR CARTA");
 		botonPedir.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		botonPedir.setBackground(new Color(80, 80, 80));
 		botonPedir.setForeground(Color.white);
 		botonPedir.setFocusable(false);
 		
-		JButton botonSalir = new JButton("Salir");
+		JButton botonSalir = new JButton("SALIR");
 		botonSalir.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		botonSalir.setBackground(new Color(80, 80, 80));
 		botonSalir.setForeground(Color.white);
 		botonSalir.setFocusable(false);
 				
 		panelBotones.add(botonJugar);
+		panelBotones.add(botonPlantarse);
 		panelBotones.add(botonPedir);
 		panelBotones.add(botonSalir);
+		
+		
+		//Acción para el botón Jugar
+		botonJugar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Reparto inicial
+				puntosJugador = sacarCarta() + sacarCarta();
+				puntosCrupier = sacarCarta() + sacarCarta();
+				
+				labelJugador.setText("JUGADOR: " + puntosJugador);
+				labelCrupier.setText("CRUPIER: " + puntosCrupier);
+				labelCentral.setText("¿Pides carta o te plantas?");
+				
+				botonJugar.setEnabled(false); // Bloqueamos el botón jugar
+				botonPedir.setEnabled(true);  // Activamos los de acción
+				botonPlantarse.setEnabled(true);
+			}
+		});
+		
+		
+		//Acción para el botón Pedir Carta
+		botonPedir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				puntosJugador += sacarCarta();
+				labelJugador.setText("JUGADOR: " + puntosJugador);
+				
+				if(puntosJugador > 21) {
+					labelCentral.setText("¡Te has pasado! Gana el crupier.");
+					botonPedir.setEnabled(false);
+					botonPlantarse.setEnabled(false);
+					botonJugar.setEnabled(true); // Al pasarse de 21, la ronda acaba y le permitimos volver a jugar
+				}
+			}
+		});
+		
+		//Acción para Plantarse
+		botonPlantarse.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				botonPedir.setEnabled(false);
+				botonPlantarse.setEnabled(false);
+				
+				// Turno automático del crupier
+				while (puntosCrupier < 17) {
+					puntosCrupier += sacarCarta();
+				}
+				labelCrupier.setText("CRUPIER: " + puntosCrupier);
+				
+				// Comprobar ganador
+				if(puntosCrupier > 21 || puntosJugador > puntosCrupier) {
+					labelCentral.setText("¡Has ganado!");
+				} else if (puntosJugador == puntosCrupier) {
+					labelCentral.setText("Empate.");
+				} else {
+					labelCentral.setText("Gana el crupier.");
+				}
+				
+				botonJugar.setEnabled(true); // Permitimos volver a jugar
+			}
+		});
+		
 		
 		//Acción para el botón salir
         botonSalir.addActionListener(new ActionListener() {
@@ -117,7 +199,8 @@ public class ventanaBlackjack extends JFrame{
 		add(panelPrincipal);
 		
 		setVisible(true);
-	}
+	}	
+
 	
 	public static void main(String[] args) {
 		new ventanaBlackjack();
