@@ -184,16 +184,6 @@ public class ventanaBlackjack extends JFrame{
 		});
 		
 		
-		//Acción para el botón salir
-        botonSalir.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new VentanaMenuJuegos().setVisible(true);
-				dispose();
-				
-			}
-		});
 				
 		// Añadimos los botones a la parte sur del panel principal
 		panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
@@ -203,18 +193,12 @@ public class ventanaBlackjack extends JFrame{
 		add(panelPrincipal);
 		
 		
-		
-		
-		
-		
-		
 		botonSalir.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				new VentanaMenuJuegos().setVisible(true);
 				dispose();
-				VentanaMenuJuegos volver = new VentanaMenuJuegos();
-				volver.setVisible(true);
 				
 			}
 		});

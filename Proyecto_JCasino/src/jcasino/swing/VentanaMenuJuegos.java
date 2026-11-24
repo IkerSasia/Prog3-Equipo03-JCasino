@@ -31,7 +31,7 @@ public class VentanaMenuJuegos extends JFrame {
 	//Para abrir el menu con un jugador que ya tenemos
 	public VentanaMenuJuegos (Jugador jugador) {		
 		setTitle("JCasino - Menu Principal");
-		setSize(400, 400);
+		setSize(1200, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); 
 		
@@ -115,17 +115,14 @@ public class VentanaMenuJuegos extends JFrame {
 		//Añadir acciones a los botones
 		
 		//BOTON BLACKJACK
-		botonBlackJack.addActionListener(new ActionListener() {
-			
+		botonBlackJack.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 
-				ventanaBlackjack BlackJack = new ventanaBlackjack();
-				BlackJack.setVisible(true);
-				
 				ventanaBlackjack blackjack = new ventanaBlackjack();
 				blackjack.setVisible(true);
+				
 			}
 		});
 		
