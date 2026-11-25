@@ -131,7 +131,7 @@ public class VentanaInicioSesion extends JFrame {
 				if (u == null) {
 					JOptionPane.showMessageDialog(VentanaInicioSesion.this, "Usuario o contraseña incorrectos");
 				}else if(u instanceof Jugador){
-					new VentanaMenuJuegos();
+					new VentanaMenuJuegos(casino, (Jugador) u);
 					dispose();
 				}else {
 					JOptionPane.showMessageDialog(VentanaInicioSesion.this, "Has iniciado sesión como Administrador");

@@ -12,24 +12,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import jcasino.dominio.Casino;
 import jcasino.dominio.Jugador;
 
 public class VentanaMenuJuegos extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
-	
-	
-	//Para abrir el menu de prueba
-	public VentanaMenuJuegos() {
-		this(new Jugador(
-				"prueba", "Jugador", "Prueba", 20, "", "", "", "1234"
-		));
-	}
-	
-	
 	//Para abrir el menu con un jugador que ya tenemos
-	public VentanaMenuJuegos (Jugador jugador) {		
+	public VentanaMenuJuegos (Casino casino, Jugador jugador) {		
 		setTitle("JCasino - Menu Principal");
 		setSize(1200, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,7 +89,6 @@ public class VentanaMenuJuegos extends JFrame {
 		panelJuegos.add(botonBlackJack);
 		panelJuegos.add(botonRuleta);
 		panelJuegos.add(botonSlots);
-		panelJuegos.add(botonSaldo);
 		
 		
 		
@@ -118,11 +109,27 @@ public class VentanaMenuJuegos extends JFrame {
 		botonBlackJack.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				new VentanaBlackjack(casino, jugador);
 				dispose();
-
-				ventanaBlackjack blackjack = new ventanaBlackjack();
-				blackjack.setVisible(true);
-				
+			}
+		});
+		
+		//BOTON RULETA
+		botonRuleta.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaRuleta(casino, jugador);
+				dispose();
+			}
+		});
+		
+		// BOTON SLOTS
+		botonSlots.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaSlot(casino, jugador);
+				dispose();
 			}
 		});
 		
@@ -131,54 +138,23 @@ public class VentanaMenuJuegos extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaSaldo(jugador);
+				new VentanaSaldo(casino, jugador);
 				dispose();
 			}
 		});
-		
-		//BOTON RULETA
-		botonRuleta.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO: Aquí pondrás la lógica o ventana para abrir la Ruleta
-				dispose();
-				VentanaRuleta ruleta = new VentanaRuleta();
-				ruleta.setVisible(true);
-			}
-		});
-		
-		// BOTON SLOTS
-		botonSlots.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO: Aquí pondrás la lógica o ventana para abrir las Slots
-				dispose();
-				VentanaSlot slot = new VentanaSlot(); // funcionalidad del boton para que nos lleve a la ventanaslot
-				slot.setVisible(true);
 
-
-				
-			}
-		});
 		
 		// Boton de cerrar sesion que vuelva a la ventana de inicio de sesion 
 		botonCerrarSesion.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				new VentanaInicioSesion(casino);
 				dispose();
-				VentanaInicioSesion ventanaLogin = new VentanaInicioSesion();
-				ventanaLogin.setVisible(true);
 				
 			}
 		});
 		setVisible(true);
 		
 	}
-
-	
-	public static void main(String[] args) {
-		new VentanaMenuJuegos();
-	}
-		
 }

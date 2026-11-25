@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class ventanaBlackjack extends JFrame{
+public class VentanaBlackjack extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -28,7 +28,7 @@ public class ventanaBlackjack extends JFrame{
 	}
 	
 	
-	public ventanaBlackjack(){
+	public VentanaBlackjack(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 		setSize(640, 480);
 		setLocationRelativeTo(null);
@@ -208,7 +208,7 @@ public class ventanaBlackjack extends JFrame{
 
 	
 	public static void main(String[] args) {
-		new ventanaBlackjack();
+		new VentanaBlackjack();
 	}
 
 }
