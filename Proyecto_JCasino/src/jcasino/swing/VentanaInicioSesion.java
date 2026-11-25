@@ -15,16 +15,21 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import jcasino.dominio.Casino;
+import jcasino.dominio.Jugador;
+import jcasino.dominio.Usuario;
 
 public class VentanaInicioSesion extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 
 
-	public VentanaInicioSesion() {
+	public VentanaInicioSesion(Casino casino) {
 		// Creamos la ventana
 		setTitle("Inicio de Sesión");
 		setSize(400, 300);
@@ -114,8 +119,23 @@ public class VentanaInicioSesion extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaMenuJuegos().setVisible(true);
-				dispose();
+				String usuario = txtUsuario.getText().trim();
+				String contrasenna = new String(txtContrasenna.getPassword());
+				
+				if (usuario.isEmpty() || contrasenna.isEmpty()) {
+					JOptionPane.showMessageDialog(VentanaInicioSesion.this, "Rellena usuario y contraseña");
+					return;
+				}
+				Usuario u = casino.iniciarSesion(usuario, contrasenna);
+				
+				if (u == null) {
+					JOptionPane.showMessageDialog(VentanaInicioSesion.this, "Usuario o contraseña incorrectos");
+				}else if(u instanceof Jugador){
+					new VentanaMenuJuegos();
+					dispose();
+				}else {
+					JOptionPane.showMessageDialog(VentanaInicioSesion.this, "Has iniciado sesión como Administrador");
+				}
 			}
 		});
 		
@@ -130,8 +150,4 @@ public class VentanaInicioSesion extends JFrame {
 		
 	}
 
-	
-	public static void main(String[] args) {
-		new VentanaInicioSesion();
-	}
 }
