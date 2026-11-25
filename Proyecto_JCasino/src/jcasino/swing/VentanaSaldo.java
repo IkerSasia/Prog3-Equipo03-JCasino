@@ -16,13 +16,14 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
 
+import jcasino.dominio.Casino;
 import jcasino.dominio.Jugador;
 
 public class VentanaSaldo extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	
-	public VentanaSaldo(Jugador jugador) {
+	public VentanaSaldo(Casino casino, Jugador jugador) {
 		setTitle("Gestión de saldo");
 		setSize(400, 300);
 		setLocationRelativeTo(null);
@@ -179,11 +180,12 @@ public class VentanaSaldo extends JFrame{
 			}
 		});
 		
+		
 		botonVolver.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaMenuJuegos(jugador);
+				new VentanaMenuJuegos(casino, jugador);
 				dispose();
 			}
 		});
