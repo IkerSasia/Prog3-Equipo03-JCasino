@@ -108,7 +108,7 @@ public class VentanaInicioSesion extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaRegistro ventanaSingUp = new VentanaRegistro();
+				VentanaRegistro ventanaSingUp = new VentanaRegistro(casino);
 				ventanaSingUp.setVisible(true); // Aparece la ventana de log In
 				dispose(); // Destruye la ventana de inicio de sesion 
 				

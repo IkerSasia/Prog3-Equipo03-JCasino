@@ -17,16 +17,20 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import jcasino.dominio.Casino;
+import jcasino.dominio.Jugador;
+
 public class VentanaRegistro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
-	public VentanaRegistro() {
+	public VentanaRegistro(Casino casino) {
 		setTitle("JCasino - Registro de Usuario");
 		setSize(450, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,7 +40,6 @@ public class VentanaRegistro extends JFrame {
 		Color colorFondo = new Color(30, 30, 30);
 		Color colorTexto = Color.WHITE;
 		Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 14);
-		Font fuenteCajas = new Font("Segoe UI", Font.PLAIN, 14);
 		
 		setLayout(new BorderLayout());
 		
@@ -164,10 +167,8 @@ public class VentanaRegistro extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaInicioSesion ventanaLogin = new VentanaInicioSesion();
-				ventanaLogin.setVisible(true); // Aparece la ventana de logIn
-				dispose(); // Destruye esta ventana
-				
+				new VentanaInicioSesion(casino);
+				dispose(); // Destruye esta ventana		
 			}
 		});
 		
@@ -176,9 +177,25 @@ public class VentanaRegistro extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaInicioSesion().setVisible(true);
-				dispose();
+				String nombre = txtNombre.getText().trim();
+				String apellidos = txtApellidos.getText().trim();
+				String usuario = txtUsuario.getText().trim();
+				String contrasena = new String(txtContrasena.getPassword());
+				String genero = rbMasculino.isSelected() ? "Masculino" : (rbFemenino.isSelected() ? "Femenino" : "");
 				
+				if (nombre.isEmpty() || apellidos.isEmpty() || usuario.isEmpty() || contrasena.isEmpty() || genero.isEmpty()) {
+					JOptionPane.showMessageDialog(VentanaRegistro.this, "Rellena todos los campos");
+					return;
+				}
+				Jugador nuevoJugador = new Jugador(usuario,nombre,apellidos,18,genero,"","",contrasena);
+				
+				if (casino.registrarUsuarios(nuevoJugador)) {
+					JOptionPane.showMessageDialog(VentanaRegistro.this, "Cuenta creada correctamente");
+					new VentanaInicioSesion(casino);
+					dispose();
+				}else {
+					JOptionPane.showMessageDialog(VentanaRegistro.this, "El nombre de usuario ya existe");
+				}
 			}
 		});
 		
@@ -191,11 +208,6 @@ public class VentanaRegistro extends JFrame {
 		add(panelCentro, BorderLayout.CENTER);
 		add(panelSur, BorderLayout.SOUTH);
 		setVisible(true);
-	}
-
-	public static void main(String[] args) {
-		new VentanaRegistro();
-
 	}
 
 }
