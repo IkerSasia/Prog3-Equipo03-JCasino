@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -17,12 +16,15 @@ import javax.swing.JTextField;
 
 import jcasino.dominio.Casino;
 import jcasino.dominio.Jugador;
+import jcasino.dominio.Slot;
 
 public class VentanaSlot extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
+	private Slot slot;
 	
 	public VentanaSlot (Casino casino, Jugador jugador) {
+		this.slot = new Slot("Tragaperras", 2.0);
 		
 		setTitle("ICasino - Slot / Tragaperras");
 		setSize(450, 350);
@@ -45,10 +47,15 @@ public class VentanaSlot extends JFrame {
 		JLabel labelTitulo = new JLabel("Tragaperras (Slot)");
 		labelTitulo.setFont(fuenteTitulo);
 		labelTitulo.setForeground(colorTexto);
+		
+		JLabel labelSaldo = new JLabel("Saldo actual: " + jugador.getSaldo() + " €", JLabel.CENTER);
+		labelSaldo.setFont(fuenteBotones);
+		labelSaldo.setForeground(Color.YELLOW);
+		
 		panelSuperior.add(labelTitulo);
-		
+		panelSuperior.add(labelSaldo);
 		add(panelSuperior, BorderLayout.NORTH);
-		
+			
 		
 		//PANEL CENTRAL - RODILLOS 
 		JPanel panelCentro = new JPanel();
@@ -56,7 +63,7 @@ public class VentanaSlot extends JFrame {
 		panelCentro.setBorder(BorderFactory.createEmptyBorder(20,40,20,40));
 		panelCentro.setLayout(new BorderLayout());
 		
-		JLabel labelRodillos = new JLabel("[1], [1], [1]", JLabel.CENTER);
+		JLabel labelRodillos = new JLabel("[1] - [1] - [1]", JLabel.CENTER);
 		labelRodillos.setFont(fuenteSlot);
 		labelRodillos.setForeground(Color.YELLOW);
 		labelRodillos.setBorder(BorderFactory.createLineBorder(new Color(80, 80, 80), 2));
@@ -72,7 +79,7 @@ public class VentanaSlot extends JFrame {
 		labelApuesta.setForeground(colorTexto);
 		labelApuesta.setFont(fuenteBotones);
 		
-		//Creamos un jttext para introducir la cantidad de apuesta deseada
+		//Creamos un jtext para introducir la cantidad de apuesta deseada
 		JTextField txtApuesta = new JTextField("10.0", 6);
 		txtApuesta.setFont(fuenteBotones);
 		
@@ -104,12 +111,8 @@ public class VentanaSlot extends JFrame {
 		
 		panelInferior.add(botonGirar);
 		panelInferior.add(botonVolver);
-		
 		add(panelInferior, BorderLayout.SOUTH);
-		
-		
-		
-		
+
 		
 		// ACCIONES DE LOS BOTONES
 		
@@ -129,19 +132,25 @@ public class VentanaSlot extends JFrame {
 			@Override
 			//Colocamos el valor aleatorio a las 3 ranuras de la Slot
 			public void actionPerformed(ActionEvent e) {
-				Random tirada = new Random();
-				int ranura1 = tirada.nextInt(7) + 1;
-				int ranura2 = tirada.nextInt(7) + 1;
-				int ranura3 = tirada.nextInt(7) + 1;
-				
-				// Mostrar el resultado en la interfaz
-				labelRodillos.setText(("[ " + ranura1 + " ] - [ " + ranura2 + " ] - [ " + ranura3 + " ]"));
-				
-				// Comprobaciones del premio igual que en la clase Slot
-				if (ranura1 == 7 && ranura2 == 7 && ranura3 == 7) {
-					JOptionPane.showMessageDialog(VentanaSlot.this, "¡JACKPOT! Has ganado el premio gordo.");
-				} else if (ranura1 == ranura2 && ranura2 == ranura3) {
-					JOptionPane.showMessageDialog(VentanaSlot.this, "¡Has ganado una combinación!");
+				try {
+					double apuesta = Double.parseDouble(txtApuesta.getText().trim());
+					double premio = slot.jugar(apuesta, jugador);
+					
+					labelRodillos.setText(
+							"[ " + slot.getRanura1() + " ] - [ " + slot.getRanura2() + " ] - [ " + slot.getRanura3() + " ]"
+					);
+					labelSaldo.setText("Saldo actual: " + jugador.getSaldo() + " €");
+					
+					if (slot.esJackpot()) {
+						JOptionPane.showMessageDialog(VentanaSlot.this, "¡JACKPOT! Has ganado "+premio+"€");
+					}else if(premio > 0) {
+						JOptionPane.showMessageDialog(VentanaSlot.this, "¡PREMIO! Has ganado "+premio+"€");
+					}
+					
+				} catch (NumberFormatException e2) {
+					JOptionPane.showMessageDialog(VentanaSlot.this, "Introduce una cantidad valida");
+				} catch (IllegalArgumentException | IllegalStateException e2) {
+					JOptionPane.showMessageDialog(VentanaSlot.this, e2.getMessage());
 				}
 				
 			}

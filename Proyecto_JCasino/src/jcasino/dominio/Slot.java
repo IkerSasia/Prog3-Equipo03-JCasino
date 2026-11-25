@@ -5,12 +5,50 @@ import java.util.Random;
 public class Slot extends Juego {
 
 	private Random tirada;
+	private int ranura1;
+	private int ranura2;
+	private int ranura3;
 	
 	public Slot(String nombre, double apuestaMinima) {
 		super(nombre, apuestaMinima);
 		this.tirada = new Random();
+		this.ranura1 = 1;
+		this.ranura2 = 2;
+		this.ranura3 = 3;
 	}
-	
+
+	public Random getTirada() {
+		return tirada;
+	}
+	public void setTirada(Random tirada) {
+		this.tirada = tirada;
+	}
+
+	public int getRanura1() {
+		return ranura1;
+	}
+	public void setRanura1(int ranura1) {
+		this.ranura1 = ranura1;
+	}
+
+	public int getRanura2() {
+		return ranura2;
+	}
+	public void setRanura2(int ranura2) {
+		this.ranura2 = ranura2;
+	}
+
+	public int getRanura3() {
+		return ranura3;
+	}
+	public void setRanura3(int ranura3) {
+		this.ranura3 = ranura3;
+	}
+
+	public boolean esJackpot() {
+		return ranura1 == 7 && ranura2 == 7 && ranura3 == 7;
+	}
+
 	
 	//--------------------------------------------------------------//
 	//					FUNCIONAMIENTO DEL JUEGO					//
@@ -22,44 +60,33 @@ public class Slot extends Juego {
 		
 		//Comprobamos que el saldo del Jugador llegue a la apuesta mínima
 		if (cantidadApostada < getApuestaMinima()) {
-			System.out.println("Apuesta Rechazada: No dispone del saldo suficiente");
-			return 0;
+			throw new IllegalArgumentException("Apuesta rechazada: la apuesta mínima es de " + getApuestaMinima() + " €.");
 		}
 		
 		//Cobramos el saldo de la apuesta
 		if (!jugador.retirarSaldo(cantidadApostada)) {
-			System.out.println("Apuesta Rechazada: Saldo insuficiente");
-			return 0;
+			throw new IllegalStateException("Apuesta rechazada: saldo insuficiente.");
 		}
 		
 		//Colocamos el valor aleatorio a las 3 ranuras de la Slot
-		int ranura1 = tirada.nextInt(7) + 1;
-		int ranura2 = tirada.nextInt(7) + 1;
-		int ranura3 = tirada.nextInt(7) + 1;
-		
-		//Mostramos el resultado de la tirada en la consola
-		System.out.println("Tirada: ["+ranura1+"]-["+ranura2+"]-["+ranura3+"]");
+		ranura1 = tirada.nextInt(7) + 1;
+		ranura2 = tirada.nextInt(7) + 1;
+		ranura3 = tirada.nextInt(7) + 1;
 		
 		//Si sale el Premio Grande
-		if (ranura1 == 7 && ranura2 == 7 && ranura3 == 7) {
+		if (esJackpot()) {
 			double premio = cantidadApostada * 50;
 			jugador.recargarSaldo(premio);
-			System.out.println("¡JACKPOT!");
-			System.out.println("Has ganado: "+premio+"€");
 			return premio;
 		}
 		//Si sale cualquier otra combianción
 		else if (ranura1 == ranura2 && ranura2 == ranura3){
 			double premio = cantidadApostada * 10;
 			jugador.recargarSaldo(premio);
-			System.out.println("Has ganado: "+premio+"€");
 			return premio;
 		}
 		//Cualquier otra cosa, pierdes
-		else {
-			System.out.println("Mala suerte, la siguiente tirada será");
-			return 0;
-		}
+		return 0;
 	}
 	
 	
