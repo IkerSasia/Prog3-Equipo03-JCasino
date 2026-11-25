@@ -15,11 +15,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import jcasino.dominio.Casino;
+import jcasino.dominio.Jugador;
+
 public class VentanaSlot extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public VentanaSlot () {
+	public VentanaSlot (Casino casino, Jugador jugador) {
 		
 		setTitle("ICasino - Slot / Tragaperras");
 		setSize(450, 350);
@@ -28,7 +31,6 @@ public class VentanaSlot extends JFrame {
 		
 		Color colorFondo = new Color(46, 139, 87);
 		Color colorTexto = Color.WHITE;
-		Color colorBoton = new Color(50, 50, 50);
 		Color colorBotonAccion = new Color(40, 120, 80); // Verde para girar
 		Color colorBotonRojo = new Color(180, 50, 50); // Para volver
 		Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 16);
@@ -115,10 +117,8 @@ public class VentanaSlot extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				new VentanaMenuJuegos(casino, jugador);
 				dispose();
-				VentanaMenuJuegos menu = new VentanaMenuJuegos();
-				menu.setVisible(true);
-				
 			}
 		} );
 		
@@ -147,16 +147,6 @@ public class VentanaSlot extends JFrame {
 			}
 			
 		});
-	
-		
-		
-		
 		setVisible(true);
-		
-		
 	}
-	public static void main(String[] args) {
-		new VentanaSlot();
-	}
-
 }
