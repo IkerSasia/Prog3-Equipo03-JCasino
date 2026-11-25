@@ -6,7 +6,6 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -21,11 +20,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
+import jcasino.dominio.Casino;
+import jcasino.dominio.Jugador;
+
 public class VentanaRuleta extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public VentanaRuleta() {
+	public VentanaRuleta(Casino casino, Jugador jugador) {
 		setTitle("JCasino - Ruleta");
 		setSize(500, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -140,9 +142,8 @@ public class VentanaRuleta extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaMenuJuegos().setVisible(true);
+				new VentanaMenuJuegos(casino, jugador);
 				dispose();
-				
 			}
 		});
         
@@ -182,9 +183,4 @@ public class VentanaRuleta extends JFrame {
 		setVisible(true);
 		
 	}
-	public static void main(String[] args) {
-		new VentanaRuleta();
-
-	}
-
 }
