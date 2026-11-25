@@ -20,8 +20,5 @@ public class Administrador extends Usuario{
 	}
 	public void setNivelPermiso(int nivelPermiso) {
 		this.nivelPermiso = nivelPermiso;
-	}
-
-	//Futuro Método de Baneos
-	
+	}	
 }

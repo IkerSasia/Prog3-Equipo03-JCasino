@@ -12,6 +12,11 @@ public class Blackjack extends Juego{
 		this.cartas = new Random();
 	}
 
+	
+	//--------------------------------------------------------------//
+	//					FUNCIONAMIENTO DEL JUEGO					//
+	//--------------------------------------------------------------//
+
 	//Método para sacar una carta con un valor aleatorio entre 1 y 11
 	private int sacarCarta() {
 		return cartas.nextInt(11) + 1;
@@ -108,7 +113,5 @@ public class Blackjack extends Juego{
 		}
 		
 	}
-	
-	
 	
 }

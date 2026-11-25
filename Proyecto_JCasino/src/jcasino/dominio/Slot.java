@@ -10,6 +10,11 @@ public class Slot extends Juego {
 		super(nombre, apuestaMinima);
 		this.tirada = new Random();
 	}
+	
+	
+	//--------------------------------------------------------------//
+	//					FUNCIONAMIENTO DEL JUEGO					//
+	//--------------------------------------------------------------//
 
 	//Llamamos al método Jugar y añadimos la funcionalidad de la Slot dentro
 	@Override

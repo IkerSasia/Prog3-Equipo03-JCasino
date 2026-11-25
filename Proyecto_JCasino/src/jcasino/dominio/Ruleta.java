@@ -22,6 +22,9 @@ public class Ruleta extends Juego{
 	}
 
 
+	//--------------------------------------------------------------//
+	//					FUNCIONAMIENTO DEL JUEGO					//
+	//--------------------------------------------------------------//
 
 	//Llamamos al método Jugar y añadimos la funcionalidad de la Ruleta dentro
 	@Override

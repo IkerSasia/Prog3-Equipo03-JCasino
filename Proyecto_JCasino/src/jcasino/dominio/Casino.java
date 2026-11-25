@@ -12,9 +12,6 @@ public class Casino {
 		this.listaJuegos = new ArrayList<Juego>();
 	}
 	
-
-	//Añadir funciones/métodos para crear usuarios e iniciar sesión
-	
 	//Método para registrar nuevos usuarios
 	public boolean registrarUsuarios(Usuario nuevoUsuario) {
 		
