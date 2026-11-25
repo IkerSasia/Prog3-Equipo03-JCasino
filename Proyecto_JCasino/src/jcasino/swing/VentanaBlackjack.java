@@ -13,6 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import jcasino.dominio.Casino;
+import jcasino.dominio.Jugador;
+
 public class VentanaBlackjack extends JFrame{
 
 	private static final long serialVersionUID = 1L;
@@ -28,7 +31,7 @@ public class VentanaBlackjack extends JFrame{
 	}
 	
 	
-	public VentanaBlackjack(){
+	public VentanaBlackjack(Casino casino, Jugador jugador){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 		setSize(640, 480);
 		setLocationRelativeTo(null);
@@ -197,18 +200,11 @@ public class VentanaBlackjack extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaMenuJuegos().setVisible(true);
+				new VentanaMenuJuegos(casino, jugador);
 				dispose();
 				
 			}
 		});
-		
 		setVisible(true);
 	}	
-
-	
-	public static void main(String[] args) {
-		new VentanaBlackjack();
-	}
-
 }
