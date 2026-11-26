@@ -103,6 +103,10 @@ public class VentanaInicioSesion extends JFrame {
 		botonRegistrarse.setBackground(new Color(46, 139, 87));
 		botonRegistrarse.setForeground(Color.WHITE);
 		
+		Font fuenteBotones = new Font("Segoe UI", Font.BOLD, 14);
+		botonInicioSesion.setFont(fuenteBotones);
+		botonRegistrarse.setFont(fuenteBotones);
+		
 		// Boton registarse nos lleve a la ventana de registrarse
 		botonRegistrarse.addActionListener(new ActionListener() {
 			
