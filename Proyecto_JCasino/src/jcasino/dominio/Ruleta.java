@@ -53,12 +53,12 @@ public class Ruleta extends Juego{
 		
 		//Comprobamos que el saldo del Jugador llegue a la apuesta mínima
 		if (cantidadApostada < getApuestaMinima()) {
-			throw new IllegalStateException("Apuesta rechazada: la apuesta mínima es de "+getApuestaMinima()+"€");
+			throw new IllegalArgumentException("Apuesta rechazada: la apuesta mínima es de "+getApuestaMinima()+"€");
 		}
 		
 		//Cobramos el saldo de la apuesta
 		if (!jugador.retirarSaldo(cantidadApostada)) {
-			throw new IllegalArgumentException("Apuesta rechazada: saldo insuficiente");
+			throw new IllegalStateException("Apuesta rechazada: saldo insuficiente");
 		}
 		
 		numeroGanador = giro.nextInt(37);
