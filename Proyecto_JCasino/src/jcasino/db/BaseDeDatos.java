@@ -1,5 +1,7 @@
 package jcasino.db;
 
-public class BaseDeDatos {
+import java.sql.Connection;
 
+public class BaseDeDatos {
+	private Connection conn;
 }
