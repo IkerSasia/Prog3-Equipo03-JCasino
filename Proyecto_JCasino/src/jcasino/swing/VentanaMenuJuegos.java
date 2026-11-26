@@ -43,6 +43,7 @@ public class VentanaMenuJuegos extends JFrame {
 		labelTitulo.setFont(fuenteTitulo);
 		labelTitulo.setForeground(colorTexto);
 		panelBienvenida.add(labelTitulo);
+		setLayout(new BorderLayout(10,10)); // Configuramos el layout general de la ventana
 		add(panelBienvenida, BorderLayout.NORTH);
 		
 		
@@ -76,9 +77,6 @@ public class VentanaMenuJuegos extends JFrame {
 		
 		botonCerrarSesion.setBackground(colorBotonRojo);
 		
-		
-		
-		setLayout(new BorderLayout(10,10)); // Configuramos el layout general de la ventana
 		
 		//Creamos un panel para los juegos
 		JPanel panelJuegos = new JPanel();
