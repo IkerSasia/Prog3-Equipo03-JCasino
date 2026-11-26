@@ -21,12 +21,9 @@ public class VentanaBlackjack extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	private Blackjack blackjack;
-	
-	
-	private int puntosJugador = 0;
 		
 	public VentanaBlackjack(Casino casino, Jugador jugador){
-		this.blackjack = new Blackjack("Blackjack", 2.0);
+		this.blackjack = casino.getBlackjack();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 		setSize(640, 480);
@@ -88,9 +85,6 @@ public class VentanaBlackjack extends JFrame{
 				
 		JButton botonJugar = new JButton("JUGAR");
 		botonJugar.setFont(new Font("Segoe UI", Font.BOLD, 16));
-
-		botonJugar.setBackground(Color.yellow);
-		botonJugar.setForeground(Color.black);
 
 		botonJugar.setBackground(new Color(80, 80, 80));
 		botonJugar.setForeground(Color.white);
@@ -176,7 +170,7 @@ public class VentanaBlackjack extends JFrame{
 				blackjack.pedirCarta();
 				labelJugador.setText("JUGADOR: " + blackjack.getPuntosJugador());
 				
-				if(puntosJugador > 21) {
+				if(!blackjack.isRondaActiva()) {
 					labelCentral.setText(blackjack.getResultado());
 					botonPedir.setEnabled(false);
 					botonPlantarse.setEnabled(false);
