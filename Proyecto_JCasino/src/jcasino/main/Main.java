@@ -1,12 +1,15 @@
-package jcasino.swing;
+package jcasino.main;
+
 
 import java.sql.SQLException;
+import jcasino.db.BaseDeDatos;
 
 import javax.swing.SwingUtilities;
 
-import jcasino.db.BaseDeDatos;
+
 import jcasino.dominio.Casino;
 import jcasino.dominio.Jugador;
+import jcasino.swing.VentanaInicioSesion;
 
 public class Main {
 
