@@ -17,32 +17,16 @@ public class Slot extends Juego {
 		this.ranura3 = 3;
 	}
 
-	public Random getTirada() {
-		return tirada;
-	}
-	public void setTirada(Random tirada) {
-		this.tirada = tirada;
-	}
-
 	public int getRanura1() {
 		return ranura1;
-	}
-	public void setRanura1(int ranura1) {
-		this.ranura1 = ranura1;
 	}
 
 	public int getRanura2() {
 		return ranura2;
 	}
-	public void setRanura2(int ranura2) {
-		this.ranura2 = ranura2;
-	}
 
 	public int getRanura3() {
 		return ranura3;
-	}
-	public void setRanura3(int ranura3) {
-		this.ranura3 = ranura3;
 	}
 
 	public boolean esJackpot() {
