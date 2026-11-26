@@ -8,13 +8,13 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -22,12 +22,16 @@ import javax.swing.border.TitledBorder;
 
 import jcasino.dominio.Casino;
 import jcasino.dominio.Jugador;
+import jcasino.dominio.Ruleta;
 
 public class VentanaRuleta extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
+	private Ruleta ruleta;
 	
 	public VentanaRuleta(Casino casino, Jugador jugador) {
+		this.ruleta = new Ruleta("Ruleta", 5.0);
+		
 		setTitle("JCasino - Ruleta");
 		setSize(500, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,6 +102,14 @@ public class VentanaRuleta extends JFrame {
         botonApostarRojo.setFocusable(false);
         botonApostarRojo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
+        botonApostarRojo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ruleta.setColorApostado("ROJO");
+			}
+		});
+        
+
         // Boton negro
         JButton botonApostarNegro = new JButton("NEGRO");
         botonApostarNegro.setBackground(Color.BLACK);
@@ -105,12 +117,28 @@ public class VentanaRuleta extends JFrame {
         botonApostarNegro.setFocusable(false);
         botonApostarNegro.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
+        botonApostarNegro.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ruleta.setColorApostado("NEGRO");
+			}
+		});
+        
+        
         // Boton Verde
         JButton botonApostarVerde = new JButton("VERDE (0)");
         botonApostarVerde.setBackground(new Color(0, 100, 0)); // Un verde más oscuro que el fondo
         botonApostarVerde.setForeground(Color.WHITE);
         botonApostarVerde.setFocusable(false);
         botonApostarVerde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        botonApostarVerde.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ruleta.setColorApostado("VERDE");
+			}
+		});
+        
         
         panelBotonesApuesta.add(botonApostarRojo);
         panelBotonesApuesta.add(botonApostarNegro);
@@ -137,6 +165,9 @@ public class VentanaRuleta extends JFrame {
         botonGirar.setFocusable(false);
         botonGirar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
+        
+ 
+        
         // ACCION DEL BOTON VOLVER
         botonVolver.addActionListener(new ActionListener() {
 			
@@ -152,21 +183,31 @@ public class VentanaRuleta extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Random numRandom = new Random();
-				int numero = numRandom.nextInt(37); // Genera un numero random del 0 al 36
-				
-				labelNumeroGanador.setText(String.valueOf(numero)); // Ponemos en el cuadrado el numero
-				
-				// Cambiar el color del marcador segun el numero
-				
-				if (numero == 0) {
-					labelNumeroGanador.setBackground(Color.GREEN); // Si toca el 0, es verde
-				}
-				else if (numero % 2 == 0) {
-					labelNumeroGanador.setBackground(Color.RED); // Si toca par, es rojo 
-				}
-				else {
-					labelNumeroGanador.setBackground(Color.BLACK); // El resto de numeros son negro
+				try {
+					double apuesta = Double.parseDouble(txtCantidad.getText().trim());
+					double premio = ruleta.jugar(apuesta, jugador);
+					
+					labelNumeroGanador.setText(String.valueOf(ruleta.getNumeroGanador()));
+					
+					String colorGanador =  ruleta.getColorGanador();
+					if(colorGanador.equals("VERDE")){
+						labelNumeroGanador.setBackground(Color.GREEN);
+					}else if(colorGanador.equals("ROJO")) {
+						labelNumeroGanador.setBackground(Color.RED);
+					}else {
+						labelNumeroGanador.setBackground(Color.BLACK);
+					}
+					
+					if(premio > 0) {
+						JOptionPane.showMessageDialog(VentanaRuleta.this, "¡Has ganado "+ premio +"€ !");
+					}else {
+						JOptionPane.showMessageDialog(VentanaRuleta.this, "No hubo suerte, sigue intentandolo");
+					}
+					
+				} catch (NumberFormatException e2) {
+					JOptionPane.showMessageDialog(VentanaRuleta.this, "Introduce una cantidad válida");
+				} catch (IllegalArgumentException | IllegalStateException e2) {
+					JOptionPane.showMessageDialog(VentanaRuleta.this, e2.getMessage());
 				}
 				
 			}

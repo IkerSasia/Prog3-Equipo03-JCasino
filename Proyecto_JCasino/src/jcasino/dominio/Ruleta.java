@@ -1,24 +1,40 @@
 package jcasino.dominio;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Ruleta extends Juego{
 
 	private Random giro;
-	private int numeroApostado;
+	private String colorApostado;
+	private int numeroGanador;
 	
 	public Ruleta(String nombre, double apuestaMinima) {
 		super(nombre, apuestaMinima);
 		this.giro = new Random();
-		this.numeroApostado = -1;
+		this.colorApostado = "";
+		this.numeroGanador = -1;
 	}
 	
-	public int getNumeroApostado() {
-		return numeroApostado;
+
+	public String getColorApostado() {
+		return colorApostado;
 	}
-	public void setNumeroApostado(int numeroApostado) {
-		this.numeroApostado = numeroApostado;
+	public void setColorApostado(String colorApostado) {
+		this.colorApostado = colorApostado;
+	}
+
+	public int getNumeroGanador() {
+		return numeroGanador;
+	}
+	
+	public String getColorGanador() {
+		if(numeroGanador == 0) {
+			return "VERDE";
+		}else if (numeroGanador % 2 == 0) {
+			return "ROJO";
+		}else {
+			return "NEGRO";
+		}
 	}
 
 
@@ -30,47 +46,35 @@ public class Ruleta extends Juego{
 	@Override
 	public double jugar(double cantidadApostada, Jugador jugador) {	
 		
+		//Comprobar si hay algún color elegido
+		if(colorApostado == null || colorApostado.isEmpty()) {
+			throw new IllegalStateException("Debes elegir un color antes de girar");
+		}
+		
 		//Comprobamos que el saldo del Jugador llegue a la apuesta mínima
 		if (cantidadApostada < getApuestaMinima()) {
-			System.out.println("Apuesta Rechazada: Saldo insuficiente");
-			return 0;
+			throw new IllegalStateException("Apuesta rechazada: la apuesta mínima es de "+getApuestaMinima()+"€");
 		}
 		
 		//Cobramos el saldo de la apuesta
 		if (!jugador.retirarSaldo(cantidadApostada)) {
-			System.out.println("Apuesta Rechazada. Saldo insuficiente");
-			return 0;
+			throw new IllegalArgumentException("Apuesta rechazada: saldo insuficiente");
 		}
 		
-		//Numero que elije el jugador
-		Scanner sc = new Scanner(System.in);
-		numeroApostado = -1;
+		numeroGanador = giro.nextInt(37);
+		String colorGanador = getColorGanador();
 		
-		while (numeroApostado < 0 || numeroApostado > 36){
-			System.out.println("Elije un número entre el 0 y el 36");
-			numeroApostado = sc.nextInt();
-			
-			if(numeroApostado < 0 || numeroApostado > 36) {
-				System.out.println("Apuesta Rechazada: Debes elegir un número válido");
+		if (colorGanador.equals(colorApostado)) {
+			double premio;
+			if(colorGanador.equals("VERDE")){
+				premio = cantidadApostada * 36;
+			}else {
+				premio = cantidadApostada * 2;
 			}
-		}
-		
-		//Generar número Aleatorio entre el 0 y el 36
-		int numeroGanador = giro.nextInt(37);
-		System.out.println("La ruleta gira... Y saca el número: "+numeroGanador+"!");
-		
-		//Comprobamos el premio
-		if (numeroGanador == numeroApostado) {
-			double premio = cantidadApostada * 36;
 			jugador.recargarSaldo(premio);
-			System.out.println("¡PREMIO GORDO!");
-			System.out.println("Has ganado la friolera de: "+premio+"€");
 			return premio;
-		}else {
-			System.out.println("Mala suerte, a la siguiente será");
-			return 0;
 		}
-
+		return 0;
 	}
 	
 	
