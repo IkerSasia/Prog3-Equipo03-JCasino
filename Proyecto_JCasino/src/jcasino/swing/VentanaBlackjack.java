@@ -5,33 +5,29 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import jcasino.dominio.Blackjack;
 import jcasino.dominio.Casino;
 import jcasino.dominio.Jugador;
 
 public class VentanaBlackjack extends JFrame{
 
 	private static final long serialVersionUID = 1L;
+	private Blackjack blackjack;
 	
 	
 	private int puntosJugador = 0;
-	private int puntosCrupier = 0;
-	private Random cartas = new Random();
-	
-	// Generador de cartas del 1 al 11
-	private int sacarCarta() {
-		return cartas.nextInt(11) + 1;
-	}
-	
-	
+		
 	public VentanaBlackjack(Casino casino, Jugador jugador){
+		this.blackjack = new Blackjack("Blackjack", 2.0);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 		setSize(640, 480);
 		setLocationRelativeTo(null);
@@ -124,22 +120,51 @@ public class VentanaBlackjack extends JFrame{
 		panelBotones.add(botonPedir);
 		panelBotones.add(botonSalir);
 		
+		//Desactivamos los botones de Pedir y Plantarse hasta que empiece la ronda
+		botonPedir.setEnabled(false);
+		botonPlantarse.setEnabled(false);
+		
 		
 		//Acción para el botón Jugar
 		botonJugar.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Reparto inicial
-				puntosJugador = sacarCarta() + sacarCarta();
-				puntosCrupier = sacarCarta() + sacarCarta();
+				String entrada = JOptionPane.showInputDialog(
+						VentanaBlackjack.this,
+						"Introduce tu apuesta (mínimo " + blackjack.getApuestaMinima()
+								+ " € | Saldo: " + jugador.getSaldo() + " €):"
+				);
+
+				if(entrada == null) {
+					return;
+				}
+
+				try {
+					double apuesta = Double.parseDouble(entrada.trim());
+					blackjack.jugar(apuesta, jugador);
+
+					labelJugador.setText("JUGADOR: " + blackjack.getPuntosJugador());
+					labelCrupier.setText("CRUPIER: " + blackjack.getPuntosCrupier());
+
+					if(!blackjack.isRondaActiva()) {
+						labelCentral.setText(blackjack.getResultado());
+						botonJugar.setEnabled(true);
+						botonPedir.setEnabled(false);
+						botonPlantarse.setEnabled(false);
+					} else {
+						labelCentral.setText("¿Pides carta o te plantas?");
+						botonJugar.setEnabled(false);
+						botonPedir.setEnabled(true);
+						botonPlantarse.setEnabled(true);
+					}
+					
+				} catch (NumberFormatException e2) {
+					JOptionPane.showMessageDialog(VentanaBlackjack.this, "Introduce una cantidad válida.");
+				} catch (IllegalArgumentException | IllegalStateException e2) {
+					JOptionPane.showMessageDialog(VentanaBlackjack.this, e2.getMessage());
+				}
 				
-				labelJugador.setText("JUGADOR: " + puntosJugador);
-				labelCrupier.setText("CRUPIER: " + puntosCrupier);
-				labelCentral.setText("¿Pides carta o te plantas?");
-				
-				botonJugar.setEnabled(false); // Bloqueamos el botón jugar
-				botonPedir.setEnabled(true);  // Activamos los de acción
-				botonPlantarse.setEnabled(true);
 			}
 		});
 		
@@ -148,11 +173,11 @@ public class VentanaBlackjack extends JFrame{
 		botonPedir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				puntosJugador += sacarCarta();
-				labelJugador.setText("JUGADOR: " + puntosJugador);
+				blackjack.pedirCarta();
+				labelJugador.setText("JUGADOR: " + blackjack.getPuntosJugador());
 				
 				if(puntosJugador > 21) {
-					labelCentral.setText("¡Te has pasado! Gana el crupier.");
+					labelCentral.setText(blackjack.getResultado());
 					botonPedir.setEnabled(false);
 					botonPlantarse.setEnabled(false);
 					botonJugar.setEnabled(true); // Al pasarse de 21, la ronda acaba y le permitimos volver a jugar
@@ -167,42 +192,27 @@ public class VentanaBlackjack extends JFrame{
 				botonPedir.setEnabled(false);
 				botonPlantarse.setEnabled(false);
 				
-				// Turno automático del crupier
-				while (puntosCrupier < 17) {
-					puntosCrupier += sacarCarta();
-				}
-				labelCrupier.setText("CRUPIER: " + puntosCrupier);
+				blackjack.plantarse(jugador);
+				labelCrupier.setText("CRUPIER: "+blackjack.getPuntosCrupier());
+				labelCentral.setText(blackjack.getResultado());
 				
-				// Comprobar ganador
-				if(puntosCrupier > 21 || puntosJugador > puntosCrupier) {
-					labelCentral.setText("¡Has ganado!");
-				} else if (puntosJugador == puntosCrupier) {
-					labelCentral.setText("Empate.");
-				} else {
-					labelCentral.setText("Gana el crupier.");
-				}
-				
-				botonJugar.setEnabled(true); // Permitimos volver a jugar
+				botonJugar.setEnabled(true);
 			}
 		});
-		
 		
 				
 		// Añadimos los botones a la parte sur del panel principal
 		panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
-				
-				
+					
 		// Finalmente, añadimos el panel principal a la ventana
 		add(panelPrincipal);
 		
-		
+		// Añadimos la acción de volver al menú al botón de salir
 		botonSalir.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new VentanaMenuJuegos(casino, jugador);
 				dispose();
-				
 			}
 		});
 		setVisible(true);
