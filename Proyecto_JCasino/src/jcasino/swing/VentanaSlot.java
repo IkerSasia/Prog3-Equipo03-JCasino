@@ -24,9 +24,9 @@ public class VentanaSlot extends JFrame {
 	private Slot slot;
 	
 	public VentanaSlot (Casino casino, Jugador jugador) {
-		this.slot = new Slot("Tragaperras", 2.0);
+		this.slot = casino.getSlot();
 		
-		setTitle("ICasino - Slot / Tragaperras");
+		setTitle("JCasino - Slot / Tragaperras");
 		setSize(450, 350);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);

@@ -30,7 +30,7 @@ public class VentanaRuleta extends JFrame {
 	private Ruleta ruleta;
 	
 	public VentanaRuleta(Casino casino, Jugador jugador) {
-		this.ruleta = new Ruleta("Ruleta", 5.0);
+		this.ruleta = casino.getRuleta();
 		
 		setTitle("JCasino - Ruleta");
 		setSize(500, 500);
