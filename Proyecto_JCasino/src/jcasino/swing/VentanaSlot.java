@@ -26,8 +26,8 @@ public class VentanaSlot extends JFrame {
 	public VentanaSlot (Casino casino, Jugador jugador) {
 		this.slot = casino.getSlot();
 		
-		setTitle("JCasino - Slot / Tragaperras");
-		setSize(450, 350);
+		setTitle("Slot");
+		setSize(650, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
@@ -35,8 +35,8 @@ public class VentanaSlot extends JFrame {
 		Color colorTexto = Color.WHITE;
 		Color colorBotonAccion = new Color(40, 120, 80); // Verde para girar
 		Color colorBotonRojo = new Color(180, 50, 50); // Para volver
-		Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 16);
-		Font fuenteSlot = new Font("Segoe UI", Font.BOLD, 22);
+		Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 20);
+		Font fuenteSlot = new Font("Segoe UI", Font.BOLD, 30);
 		Font fuenteBotones = new Font("Segoe UI", Font.PLAIN, 14);
 		
 		// PANEL SUPERIOR - TITULO:

@@ -26,7 +26,7 @@ public class VentanaBlackjack extends JFrame{
 		this.blackjack = casino.getBlackjack();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
-		setSize(640, 480);
+		setSize(650, 500);
 		setLocationRelativeTo(null);
 		setTitle("Mesa de Blackjack");
 		
@@ -52,7 +52,7 @@ public class VentanaBlackjack extends JFrame{
 		//Zona del Crupier
 		JLabel labelCrupier = new JLabel("CRUPIER", SwingConstants.CENTER);
 		labelCrupier.setForeground(Color.WHITE);
-		labelCrupier.setFont(new Font("Arial", Font.BOLD, 24));
+		labelCrupier.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		
 		labelCrupier.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); //Margen para que no se pegue a la línea negra
 		panelJuego.add(labelCrupier, BorderLayout.NORTH);
@@ -61,14 +61,14 @@ public class VentanaBlackjack extends JFrame{
 		//Zona para las cartas
 		JLabel labelCentral = new JLabel("ZONA DE JUEGO", SwingConstants.CENTER);
 		labelCentral.setForeground(Color.WHITE);
-		labelCentral.setFont(new Font("Arial", Font.BOLD, 24));
+		labelCentral.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		panelJuego.add(labelCentral, BorderLayout.CENTER);
 				
 				
 		//Zona para el Jugador
 		JLabel labelJugador = new JLabel("JUGADOR", SwingConstants.CENTER);
 		labelJugador.setForeground(Color.WHITE);
-		labelJugador.setFont(new Font("Arial", Font.BOLD, 24));
+		labelJugador.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		
 		labelJugador.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		panelJuego.add(labelJugador, BorderLayout.SOUTH);
@@ -84,7 +84,7 @@ public class VentanaBlackjack extends JFrame{
 		panelBotones.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0)); // Margén con la parte de arriba
 				
 		JButton botonJugar = new JButton("JUGAR");
-		botonJugar.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		botonJugar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 
 		botonJugar.setBackground(new Color(80, 80, 80));
 		botonJugar.setForeground(Color.white);
@@ -92,19 +92,19 @@ public class VentanaBlackjack extends JFrame{
 		botonJugar.setFocusable(false);
 		
 		JButton botonPlantarse = new JButton("PLANTARSE");
-		botonPlantarse.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		botonPlantarse.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		botonPlantarse.setBackground(new Color(80, 80, 80));
 		botonPlantarse.setForeground(Color.white);
 		botonPlantarse.setFocusable(false);
 		
 		JButton botonPedir = new JButton("PEDIR CARTA");
-		botonPedir.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		botonPedir.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		botonPedir.setBackground(new Color(80, 80, 80));
 		botonPedir.setForeground(Color.white);
 		botonPedir.setFocusable(false);
 		
 		JButton botonSalir = new JButton("SALIR");
-		botonSalir.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		botonSalir.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		botonSalir.setBackground(new Color(80, 80, 80));
 		botonSalir.setForeground(Color.white);
 		botonSalir.setFocusable(false);

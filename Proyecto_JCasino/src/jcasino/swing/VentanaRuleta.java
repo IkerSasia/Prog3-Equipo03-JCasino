@@ -32,8 +32,8 @@ public class VentanaRuleta extends JFrame {
 	public VentanaRuleta(Casino casino, Jugador jugador) {
 		this.ruleta = casino.getRuleta();
 		
-		setTitle("JCasino - Ruleta");
-		setSize(500, 500);
+		setTitle("Ruleta");
+		setSize(650, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); 
 		
@@ -152,14 +152,14 @@ public class VentanaRuleta extends JFrame {
         panelSur.setBackground(colorFondo);
         
         JButton botonVolver = new JButton("SALIR");
-        botonVolver.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        botonVolver.setFont(new Font("Segoe UI", Font.BOLD, 14));
         botonVolver.setBackground(new Color(80, 80, 80));
         botonVolver.setForeground(Color.WHITE);
         botonVolver.setFocusable(false);
         botonVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         JButton botonGirar = new JButton("GIRAR RULETA");
-        botonGirar.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        botonGirar.setFont(new Font("Segoe UI", Font.BOLD, 14));
         botonGirar.setBackground(new Color(80, 80, 80)); 
         botonGirar.setForeground(Color.WHITE);
         botonGirar.setFocusable(false);

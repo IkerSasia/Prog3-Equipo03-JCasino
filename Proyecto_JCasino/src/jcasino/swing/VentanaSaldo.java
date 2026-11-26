@@ -25,7 +25,7 @@ public class VentanaSaldo extends JFrame{
 	
 	public VentanaSaldo(Casino casino, Jugador jugador) {
 		setTitle("Gestión de saldo");
-		setSize(400, 300);
+		setSize(450, 350);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		

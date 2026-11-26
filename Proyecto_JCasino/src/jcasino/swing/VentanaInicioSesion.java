@@ -32,14 +32,14 @@ public class VentanaInicioSesion extends JFrame {
 	public VentanaInicioSesion(Casino casino) {
 		// Creamos la ventana
 		setTitle("Inicio de Sesión");
-		setSize(400, 300);
+		setSize(450, 350);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); 
 		
 		// Personalización de la ventana
 		Color colorFondo = new Color(30, 30, 30);
 		Color colorTexto = Color.WHITE;
-		Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 14);
+		Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 20);
 		Font fuenteCajas = new Font("Segoe UI", Font.PLAIN, 14);
 		
 		

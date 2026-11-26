@@ -23,7 +23,7 @@ public class VentanaMenuJuegos extends JFrame {
 	//Para abrir el menu con un jugador que ya tenemos
 	public VentanaMenuJuegos (Casino casino, Jugador jugador) {		
 		setTitle("JCasino - Menu Principal");
-		setSize(1200, 800);
+		setSize(650, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); 
 		
@@ -33,7 +33,7 @@ public class VentanaMenuJuegos extends JFrame {
 		Color colorBoton = new Color(50, 50, 50);
 		Color colorBotonRojo = new Color(180, 50, 50); // Para cerrar sesión
 		Color colorBotonSaldo = new Color(40, 120, 80);
-		Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 16);
+		Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 20);
 		Font fuenteBotones = new Font("Segoe UI", Font.PLAIN, 14);
 		
 		//Panel superior con un titulo de bienvenida
