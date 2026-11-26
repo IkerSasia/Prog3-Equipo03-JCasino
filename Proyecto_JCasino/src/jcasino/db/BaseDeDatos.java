@@ -12,4 +12,11 @@ public class BaseDeDatos {
 			conn = DriverManager.getConnection( "jdbc:sqlite:resources/db/jcasino.db");
 		}
 	}
+	
+	public void desconectar() throws SQLException{
+		if (conn != null && !conn.isClosed()) {  // Comprobamos que haya una conexión abierta 
+            conn.close();
+		}
+		
+	}
 }
