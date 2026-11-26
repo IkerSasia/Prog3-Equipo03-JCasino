@@ -10,7 +10,54 @@ public class Casino {
 	public Casino() {
 		this.listaUsuarios = new ArrayList<Usuario>();
 		this.listaJuegos = new ArrayList<Juego>();
+		cargarJuegosPorDefecto();
+		
 	}
+	
+	private void cargarJuegosPorDefecto() {
+		this.listaJuegos.add(new Slot("Tragaperras", 2.0));
+		this.listaJuegos.add(new Ruleta("Ruleta", 5.0));
+		this.listaJuegos.add(new Blackjack("Blackjack", 2.0));
+	}
+	
+	public ArrayList<Juego> getListaJuegos() {
+		return listaJuegos;
+	}
+
+	public void agregarJuego(Juego juego) {
+		if (juego != null) {
+			this.listaJuegos.add(juego);
+		}
+	}
+
+	public Slot getSlot() {
+		for (Juego j : listaJuegos) {
+			if (j instanceof Slot) {
+				return (Slot) j;
+			}
+		}
+		return null;
+	}
+
+	public Ruleta getRuleta() {
+		for (Juego j : listaJuegos) {
+			if (j instanceof Ruleta) {
+				return (Ruleta) j;
+			}
+		}
+		return null;
+	}
+
+	public Blackjack getBlackjack() {
+		for (Juego j : listaJuegos) {
+			if (j instanceof Blackjack) {
+				return (Blackjack) j;
+			}
+		}
+		return null;
+	}
+	
+	
 	
 	//Método para registrar nuevos usuarios
 	public boolean registrarUsuarios(Usuario nuevoUsuario) {
