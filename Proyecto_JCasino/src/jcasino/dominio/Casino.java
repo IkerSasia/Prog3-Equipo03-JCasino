@@ -20,6 +20,10 @@ public class Casino {
 		this.listaJuegos.add(new Blackjack("Blackjack", 2.0));
 	}
 	
+	public ArrayList<Usuario> getLisUsuarios(){
+		return listaUsuarios;
+	}
+	
 	public ArrayList<Juego> getListaJuegos() {
 		return listaJuegos;
 	}
@@ -90,5 +94,23 @@ public class Casino {
 		return null;
 	}
 	
+	
+	//Método para eliminar usuarios (excepto usuarios administradores)
+	public boolean eliminarUsuario(String nombreUsuario){
+		for (int i = 0; i < listaUsuarios.size(); i++) {
+			Usuario u = listaUsuarios.get(i);
+			if(u.getNombreUsuario().equals(nombreUsuario)) {
+				if(u instanceof Administrador) {
+					throw new IllegalStateException("No se puede eliminar una cuenta de Administrador");
+				}
+				listaUsuarios.remove(i);
+				return true;
+			}
+		}	
+		return false;
+	}
+	
+	
+
 	
 }
