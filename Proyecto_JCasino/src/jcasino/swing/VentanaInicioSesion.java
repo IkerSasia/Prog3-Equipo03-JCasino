@@ -138,7 +138,8 @@ public class VentanaInicioSesion extends JFrame {
 					new VentanaMenuJuegos(casino, (Jugador) u);
 					dispose();
 				}else {
-					JOptionPane.showMessageDialog(VentanaInicioSesion.this, "Has iniciado sesión como Administrador");
+					new VentanaAdmin(casino);
+					dispose();
 				}
 			}
 		});
