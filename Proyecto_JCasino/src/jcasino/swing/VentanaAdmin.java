@@ -3,22 +3,30 @@ package jcasino.swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.AbstractTableModel;
 
+import jcasino.dominio.Administrador;
 import jcasino.dominio.Casino;
+import jcasino.dominio.Jugador;
+import jcasino.dominio.Usuario;
 
 public class VentanaAdmin extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private ModeloTablaUsuarios modeloTabla;
 	private JTable tablaUsuarios;
+	
 	
 	public VentanaAdmin(Casino casino) {
 		setTitle("Ventana de Administrador");
@@ -87,20 +95,67 @@ public class VentanaAdmin extends JFrame {
 		
 		
 		//Creamos la tabla 
-		tablaUsuarios = new JTable();
+		modeloTabla = new ModeloTablaUsuarios(casino.getLisUsuarios());
+		tablaUsuarios = new JTable(modeloTabla);
 		tablaUsuarios.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		tablaUsuarios.setRowHeight(26);
 		tablaUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tablaUsuarios.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+		JScrollPane scrollTabla = new JScrollPane(tablaUsuarios);
 		
 		JPanel panelCentro = new JPanel(new BorderLayout());
 		panelCentro.setBackground(new Color(30, 30, 30));
 		panelCentro.setBorder(BorderFactory.createEmptyBorder(0, 25, 0 ,25));
+		panelCentro.add(scrollTabla, BorderLayout.CENTER);
 		
 		add(panelCentro, BorderLayout.CENTER);
 		
 		
 		setVisible(true);
+	}
+	
+	private class ModeloTablaUsuarios extends AbstractTableModel {
+		private static final long serialVersionUID = 1L;
+		private String[] columnas = { "Usuario", "Nombre", "Apellidos", "Rol", "Saldo (€)" };
+		private ArrayList<Usuario> usuarios;
+
+		public ModeloTablaUsuarios(ArrayList<Usuario> usuarios) {
+			this.usuarios = usuarios;
+		}
+
+		@Override
+		public int getRowCount() {
+			return usuarios.size();
+		}
+
+		@Override
+		public int getColumnCount() {
+			return columnas.length;
+		}
+
+		@Override
+		public String getColumnName(int column) {
+			return columnas[column];
+		}
+
+		@Override
+		public Object getValueAt(int rowIndex, int columnIndex) {
+			Usuario u = usuarios.get(rowIndex);
+			switch (columnIndex) {
+			case 0:
+				return u.getNombreUsuario();
+			case 1:
+				return u.getNombre();
+			case 2:
+				return u.getApellidos();
+			case 3:
+				return (u instanceof Administrador) ? "Administrador" : "Jugador";
+			case 4:
+				return (u instanceof Jugador) ? ((Jugador) u).getSaldo() : "-";
+			default:
+				return "";
+			}
+		}
 	}
 }
 
