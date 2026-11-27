@@ -20,7 +20,7 @@ public class Casino {
 		this.listaJuegos.add(new Blackjack("Blackjack", 2.0));
 	}
 	
-	public ArrayList<Usuario> getLisUsuarios(){
+	public ArrayList<Usuario> getListaUsuarios(){
 		return listaUsuarios;
 	}
 	

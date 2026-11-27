@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -97,7 +98,7 @@ public class VentanaAdmin extends JFrame {
 		
 		
 		//Creamos la tabla 
-		modeloTabla = new ModeloTablaUsuarios(casino.getLisUsuarios());
+		modeloTabla = new ModeloTablaUsuarios(casino.getListaUsuarios());
 		tablaUsuarios = new JTable(modeloTabla);
 		tablaUsuarios.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		tablaUsuarios.setRowHeight(26);
@@ -124,6 +125,32 @@ public class VentanaAdmin extends JFrame {
 		});
 		
 		
+		//Acción para el botón de eliminar el usuario seleccionado
+		botonEliminar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int fila = tablaUsuarios.getSelectedRow();
+				if (fila == -1) {
+					JOptionPane.showMessageDialog(VentanaAdmin.this, "Selecciona un usuario en la tabla");
+					return;
+				}
+				
+				String nombreUsuario = (String) modeloTabla.getValueAt(fila, 0);
+				int confirmacion = JOptionPane.showConfirmDialog(VentanaAdmin.this, "¿Seguro que quieres eliminar a "+ nombreUsuario +"?", "Confirmar eliminación",JOptionPane.YES_NO_OPTION);
+				
+				if(confirmacion == JOptionPane.YES_OPTION) {
+					try {
+						casino.eliminarUsuario(nombreUsuario);
+						modeloTabla.refrescar(casino.getListaUsuarios());
+					} catch (IllegalStateException e2) {
+						JOptionPane.showMessageDialog(VentanaAdmin.this, e2.getMessage());
+					}
+				}
+			}
+		});
+		
+		
 		setVisible(true);
 	}
 	
@@ -135,6 +162,12 @@ public class VentanaAdmin extends JFrame {
 		public ModeloTablaUsuarios(ArrayList<Usuario> usuarios) {
 			this.usuarios = usuarios;
 		}
+		
+		// Actualiza la lista y avisa a Swing para que repinte la tabla
+			public void refrescar(ArrayList<Usuario> usuarios) {
+				this.usuarios = usuarios;
+				fireTableDataChanged();
+			}
 
 		@Override
 		public int getRowCount() {
