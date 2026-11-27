@@ -20,6 +20,7 @@ import javax.swing.table.AbstractTableModel;
 
 import jcasino.dominio.Administrador;
 import jcasino.dominio.Casino;
+import jcasino.dominio.Juego;
 import jcasino.dominio.Jugador;
 import jcasino.dominio.Usuario;
 
@@ -176,6 +177,42 @@ public class VentanaAdmin extends JFrame {
 					} else {
 						JOptionPane.showMessageDialog(VentanaAdmin.this, "Solo se puede editar el saldo de un Jugador.");
 					}
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(VentanaAdmin.this, "Introduce una cantidad válida.");
+				} catch (IllegalArgumentException ex) {
+					JOptionPane.showMessageDialog(VentanaAdmin.this, ex.getMessage());
+				}
+			}
+		});
+		
+		
+		//Acción para el botón cambiar apuesta mínima de cualquier juego
+		botonApuestas.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<Juego> juegos = casino.getListaJuegos();
+				String[] nombres = new String[juegos.size()];
+				for (int i = 0; i < juegos.size(); i++) {
+					nombres[i] = juegos.get(i).getNombre();
+				}
+				
+				String juegoElegido = (String) JOptionPane.showInputDialog(VentanaAdmin.this, "Elige el juego que quieres modificar:", "Apuestas Mínimas", JOptionPane.QUESTION_MESSAGE, null, nombres, nombres[0]);
+				
+				if(juegoElegido == null) {
+					return;
+				}
+				
+				String entrada = JOptionPane.showInputDialog(VentanaAdmin.this, "Nueva apuesta mínima para "+juegoElegido+":");
+				
+				if(entrada == null) {
+					return;
+				}
+				
+				try {
+					double nuevaApuesta = Double.parseDouble(entrada.trim());
+					casino.actualizarApuestaMinima(juegoElegido, nuevaApuesta);
+					JOptionPane.showMessageDialog(VentanaAdmin.this, "Apuesta mínima actualizada correctamente.");
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(VentanaAdmin.this, "Introduce una cantidad válida.");
 				} catch (IllegalArgumentException ex) {
