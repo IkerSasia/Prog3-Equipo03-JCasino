@@ -3,6 +3,8 @@ package jcasino.swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -111,6 +113,17 @@ public class VentanaAdmin extends JFrame {
 		add(panelCentro, BorderLayout.CENTER);
 		
 		
+		//Acción para el botón de cerrar sesión
+		botonCerrarSesion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaInicioSesion(casino);
+				dispose();
+			}
+		});
+		
+		
 		setVisible(true);
 	}
 	
@@ -157,5 +170,8 @@ public class VentanaAdmin extends JFrame {
 			}
 		}
 	}
+	
+
+	
 }
 
