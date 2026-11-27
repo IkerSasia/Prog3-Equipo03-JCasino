@@ -99,7 +99,8 @@ public class VentanaRuleta extends JFrame {
         JButton botonApostarRojo = new JButton("ROJO");
         botonApostarRojo.setBackground(new Color(220, 20, 60)); // color rojo
         botonApostarRojo.setForeground(Color.WHITE);
-        botonApostarRojo.setFocusable(false);
+        botonApostarRojo.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        botonApostarRojo.setFocusPainted(false);
         botonApostarRojo.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         botonApostarRojo.addActionListener(new ActionListener() {
@@ -114,7 +115,8 @@ public class VentanaRuleta extends JFrame {
         JButton botonApostarNegro = new JButton("NEGRO");
         botonApostarNegro.setBackground(Color.BLACK);
         botonApostarNegro.setForeground(Color.WHITE);
-        botonApostarNegro.setFocusable(false);
+        botonApostarNegro.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        botonApostarNegro.setFocusPainted(false);
         botonApostarNegro.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         botonApostarNegro.addActionListener(new ActionListener() {
@@ -126,10 +128,11 @@ public class VentanaRuleta extends JFrame {
         
         
         // Boton Verde
-        JButton botonApostarVerde = new JButton("VERDE (0)");
+        JButton botonApostarVerde = new JButton("VERDE");
         botonApostarVerde.setBackground(new Color(0, 100, 0)); // Un verde más oscuro que el fondo
         botonApostarVerde.setForeground(Color.WHITE);
-        botonApostarVerde.setFocusable(false);
+        botonApostarVerde.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        botonApostarVerde.setFocusPainted(false);
         botonApostarVerde.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         botonApostarVerde.addActionListener(new ActionListener() {
@@ -153,16 +156,16 @@ public class VentanaRuleta extends JFrame {
         
         JButton botonVolver = new JButton("SALIR");
         botonVolver.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonVolver.setBackground(new Color(80, 80, 80));
+        botonVolver.setBackground(new Color(180, 50, 50));
         botonVolver.setForeground(Color.WHITE);
-        botonVolver.setFocusable(false);
+        botonVolver.setFocusPainted(false);
         botonVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         JButton botonGirar = new JButton("GIRAR RULETA");
         botonGirar.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        botonGirar.setBackground(new Color(80, 80, 80)); 
+        botonGirar.setBackground(new Color(70, 70, 70)); 
         botonGirar.setForeground(Color.WHITE);
-        botonGirar.setFocusable(false);
+        botonGirar.setFocusPainted(false);
         botonGirar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         
@@ -213,8 +216,9 @@ public class VentanaRuleta extends JFrame {
 			}
 		});
         
+        panelSur.add(botonGirar); 
         panelSur.add(botonVolver);
-        panelSur.add(botonGirar);
+        
         
         
 		// Añadimos todo a la ventana principal

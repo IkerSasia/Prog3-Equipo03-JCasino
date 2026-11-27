@@ -45,13 +45,13 @@ public class VentanaSaldo extends JFrame{
 		JButton botonRecargar = new JButton("Recargar");
 		botonRecargar.setBackground(colorBoton);
 		botonRecargar.setForeground(Color.WHITE);
-		botonRecargar.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		botonRecargar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		botonRecargar.setFocusPainted(false);
 		
 		JButton botonRetirar = new JButton("Retirar");
 		botonRetirar.setBackground(colorBoton);
 		botonRetirar.setForeground(Color.WHITE);
-		botonRetirar.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		botonRetirar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		botonRetirar.setFocusPainted(false);
 		
 		panelRecarga.add(labelCantidad);
@@ -82,10 +82,10 @@ public class VentanaSaldo extends JFrame{
 		
 		
 		//Botones
-		JButton botonVolver = new JButton("Volver al menu");
-		botonVolver.setBackground(colorBoton);
+		JButton botonVolver = new JButton("Volver al menú");
+		botonVolver.setBackground(new Color(70, 70, 70));
 		botonVolver.setForeground(Color.WHITE);
-		botonVolver.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		botonVolver.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		botonVolver.setFocusPainted(false);
 		
 		JPanel panelSur = new JPanel();

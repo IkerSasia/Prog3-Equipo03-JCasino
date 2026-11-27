@@ -30,7 +30,7 @@ public class VentanaBlackjack extends JFrame{
 		setLocationRelativeTo(null);
 		setTitle("Mesa de Blackjack");
 		
-		Color colorFondo = new Color(46, 139, 87);
+		Color colorFondo = new Color(40, 120, 80);
 		
 		
 		//Panel Principal: Ocupa toda la ventana y nos da los márgenes
@@ -85,29 +85,27 @@ public class VentanaBlackjack extends JFrame{
 				
 		JButton botonJugar = new JButton("JUGAR");
 		botonJugar.setFont(new Font("Segoe UI", Font.BOLD, 14));
-
-		botonJugar.setBackground(new Color(80, 80, 80));
+		botonJugar.setBackground(new Color(70, 70, 70));
 		botonJugar.setForeground(Color.white);
-
-		botonJugar.setFocusable(false);
+		botonJugar.setFocusPainted(false);
 		
 		JButton botonPlantarse = new JButton("PLANTARSE");
 		botonPlantarse.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		botonPlantarse.setBackground(new Color(80, 80, 80));
+		botonPlantarse.setBackground(new Color(70, 70, 70));
 		botonPlantarse.setForeground(Color.white);
-		botonPlantarse.setFocusable(false);
+		botonPlantarse.setFocusPainted(false);
 		
 		JButton botonPedir = new JButton("PEDIR CARTA");
 		botonPedir.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		botonPedir.setBackground(new Color(80, 80, 80));
+		botonPedir.setBackground(new Color(70, 70, 70));
 		botonPedir.setForeground(Color.white);
-		botonPedir.setFocusable(false);
+		botonPedir.setFocusPainted(false);
 		
 		JButton botonSalir = new JButton("SALIR");
 		botonSalir.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		botonSalir.setBackground(new Color(80, 80, 80));
+		botonSalir.setBackground(new Color(180, 50, 50));
 		botonSalir.setForeground(Color.white);
-		botonSalir.setFocusable(false);
+		botonSalir.setFocusPainted(false);
 				
 		panelBotones.add(botonJugar);
 		panelBotones.add(botonPlantarse);

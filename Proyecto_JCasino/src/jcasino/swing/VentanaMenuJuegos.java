@@ -30,11 +30,11 @@ public class VentanaMenuJuegos extends JFrame {
 		//Colores y fuentes para la misma estetica de la ventana Inicio Sesion
 		Color colorFondo = new Color(30, 30, 30);
 		Color colorTexto = Color.WHITE;
-		Color colorBoton = new Color(50, 50, 50);
+		Color colorBoton = new Color(70, 70, 70);
 		Color colorBotonRojo = new Color(180, 50, 50); // Para cerrar sesión
 		Color colorBotonSaldo = new Color(40, 120, 80);
 		Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 20);
-		Font fuenteBotones = new Font("Segoe UI", Font.PLAIN, 14);
+		Font fuenteBotones = new Font("Segoe UI", Font.BOLD, 14);
 		
 		//Panel superior con un titulo de bienvenida
 		JPanel panelBienvenida = new JPanel();
@@ -48,11 +48,11 @@ public class VentanaMenuJuegos extends JFrame {
 		
 		
 		//Botones para cada juego, Saldo y Cerrar Sesion
-		JButton botonBlackJack = new JButton("BlackJack");
-		JButton botonRuleta = new JButton("Ruleta");
-		JButton botonSlots = new JButton("Slot");
-		JButton botonSaldo = new JButton("Gestión de Saldo");
-		JButton botonCerrarSesion = new JButton("Cerrar Sesion");
+		JButton botonBlackJack = new JButton("BLACKJACK");
+		JButton botonRuleta = new JButton("RULETA");
+		JButton botonSlots = new JButton("SLOT");
+		JButton botonSaldo = new JButton("GESTIÓN DE SALDO");
+		JButton botonCerrarSesion = new JButton("CERRAR SESIÓN");
 		
 		//Aplicamos el mismo estilo a los botones 
 		botonBlackJack.setBackground(colorBoton);
@@ -76,6 +76,9 @@ public class VentanaMenuJuegos extends JFrame {
 		botonSaldo.setFocusPainted(false);
 		
 		botonCerrarSesion.setBackground(colorBotonRojo);
+		botonCerrarSesion.setForeground(colorTexto);
+		botonCerrarSesion.setFont(fuenteBotones);
+		botonCerrarSesion.setFocusPainted(false);
 		
 		
 		//Creamos un panel para los juegos

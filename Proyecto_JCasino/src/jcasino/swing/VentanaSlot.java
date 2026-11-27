@@ -31,20 +31,18 @@ public class VentanaSlot extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
-		Color colorFondo = new Color(46, 139, 87);
+		Color colorFondo = new Color(40, 120, 80);
 		Color colorTexto = Color.WHITE;
-		Color colorBotonAccion = new Color(40, 120, 80); // Verde para girar
-		Color colorBotonRojo = new Color(180, 50, 50); // Para volver
 		Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 20);
 		Font fuenteSlot = new Font("Segoe UI", Font.BOLD, 30);
-		Font fuenteBotones = new Font("Segoe UI", Font.PLAIN, 14);
+		Font fuenteBotones = new Font("Segoe UI", Font.BOLD, 14);
 		
 		// PANEL SUPERIOR - TITULO:
 		JPanel panelSuperior = new JPanel();
 		panelSuperior.setBackground(colorFondo);
 		panelSuperior.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 		
-		JLabel labelTitulo = new JLabel("Tragaperras (Slot)");
+		JLabel labelTitulo = new JLabel("SLOT");
 		labelTitulo.setFont(fuenteTitulo);
 		labelTitulo.setForeground(colorTexto);
 		
@@ -95,16 +93,16 @@ public class VentanaSlot extends JFrame {
 		panelInferior.setBackground(colorFondo);
 		panelInferior.setBorder(BorderFactory.createEmptyBorder(0, 0, 15, 0));
 		
-		JButton botonGirar = new JButton("Girar Slot");
-		JButton botonVolver = new JButton("Volver al Menú");
+		JButton botonGirar = new JButton("GIRAR SLOT");
+		JButton botonVolver = new JButton("VOLVER AL MENÚ");
 		
 		//Aplicamos el mismo diseño de colores a los botones
-		botonGirar.setBackground(colorBotonAccion);
+		botonGirar.setBackground(new Color(70, 70, 70));
 		botonGirar.setForeground(colorTexto);
 		botonGirar.setFont(fuenteBotones);
 		botonGirar.setFocusPainted(false);
 
-		botonVolver.setBackground(colorBotonRojo);
+		botonVolver.setBackground(new Color(180, 50, 50));
 		botonVolver.setForeground(colorTexto);
 		botonVolver.setFont(fuenteBotones);
 		botonVolver.setFocusPainted(false);

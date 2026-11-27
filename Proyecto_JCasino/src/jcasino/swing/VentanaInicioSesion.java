@@ -93,14 +93,14 @@ public class VentanaInicioSesion extends JFrame {
 		JPanel panelSur = new JPanel(new FlowLayout()); 
 		panelSur.setBackground(colorFondo);
 		// Creamos los botones 
-		JButton botonInicioSesion = new JButton("Iniciar Sesión");
-		JButton botonRegistrarse = new JButton("Registrarse");
+		JButton botonInicioSesion = new JButton("INICIAR SESIÓN");
+		JButton botonRegistrarse = new JButton("REGISTRARSE");
 		botonInicioSesion.setFocusPainted(false);
 		botonRegistrarse.setFocusPainted(false);
 		
-		botonInicioSesion.setBackground(new Color(46, 139, 87));
+		botonInicioSesion.setBackground(new Color(40, 120, 80));
 		botonInicioSesion.setForeground(Color.WHITE);
-		botonRegistrarse.setBackground(new Color(46, 139, 87));
+		botonRegistrarse.setBackground(new Color(40, 120, 80));
 		botonRegistrarse.setForeground(Color.WHITE);
 		
 		Font fuenteBotones = new Font("Segoe UI", Font.BOLD, 14);
