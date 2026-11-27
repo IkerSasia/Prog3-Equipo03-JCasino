@@ -6,7 +6,7 @@ import jcasino.db.BaseDeDatos;
 
 import javax.swing.SwingUtilities;
 
-
+import jcasino.dominio.Administrador;
 import jcasino.dominio.Casino;
 import jcasino.dominio.Jugador;
 import jcasino.swing.VentanaInicioSesion;
@@ -47,7 +47,10 @@ BaseDeDatos bd = new BaseDeDatos();
 		Jugador jugador1 = new Jugador("iker", "Iker", "Sasia", 22, "Masculino", "600123456", "iker@jcasino.com", "1234");
 		jugador1.recargarSaldo(200);
 		
+		Administrador admin = new Administrador("admin", "Admin", "Casino", 30, "Masculino", "600000000", "admin@jcasino.com", "admin");
+		
 		casino.registrarUsuarios(jugador1);
+		casino.registrarUsuarios(admin);
 	}
 	
 	
