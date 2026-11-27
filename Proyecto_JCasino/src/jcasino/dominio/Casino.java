@@ -95,7 +95,7 @@ public class Casino {
 	}
 	
 	
-	//Método para eliminar usuarios (excepto usuarios administradores)
+	//Método para eliminar usuarios siendo Admin(excepto usuarios administradores)
 	public boolean eliminarUsuario(String nombreUsuario){
 		for (int i = 0; i < listaUsuarios.size(); i++) {
 			Usuario u = listaUsuarios.get(i);
@@ -111,7 +111,7 @@ public class Casino {
 	}
 	
 	
-	//Método para actualizar el saldo de los jugadores
+	//Método para actualizar el saldo de los jugadores siendo Admin
 	public boolean actualizarSaldoJugador(String nombreUsuario, double nuevoSaldo) {
 		if (nuevoSaldo < 0) {
 			throw new IllegalArgumentException("El saldo no puede ser negativo");
@@ -119,6 +119,21 @@ public class Casino {
 		for (Usuario u: listaUsuarios) {
 			if(u.getNombreUsuario().equals(nombreUsuario) && u instanceof Jugador) {
 				((Jugador) u).setSaldo(nuevoSaldo);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	//Método para actualizar las apuestas mínimas siendo Admin
+	public boolean actualizarApuestaMinima(String nombreJuego, double nuevaApuesta) {
+		if(nuevaApuesta <= 0) {
+			throw new IllegalArgumentException("La apuesta no puede ser 0 o menor");
+		}
+		for (Juego j: listaJuegos) {
+			if(j.getNombre().equals(nombreJuego)) {
+				j.setApuestaMinima(nuevaApuesta);
 				return true;
 			}
 		}
