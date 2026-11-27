@@ -111,6 +111,20 @@ public class Casino {
 	}
 	
 	
-
+	//Método para actualizar el saldo de los jugadores
+	public boolean actualizarSaldoJugador(String nombreUsuario, double nuevoSaldo) {
+		if (nuevoSaldo < 0) {
+			throw new IllegalArgumentException("El saldo no puede ser negativo");
+		}
+		for (Usuario u: listaUsuarios) {
+			if(u.getNombreUsuario().equals(nombreUsuario) && u instanceof Jugador) {
+				((Jugador) u).setSaldo(nuevoSaldo);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
 	
 }
