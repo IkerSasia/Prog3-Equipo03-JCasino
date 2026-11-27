@@ -9,12 +9,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 
 import jcasino.dominio.Casino;
 
 public class VentanaAdmin extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
+	
+	private JTable tablaUsuarios;
 	
 	public VentanaAdmin(Casino casino) {
 		setTitle("Ventana de Administrador");
@@ -82,7 +86,18 @@ public class VentanaAdmin extends JFrame {
 		
 		
 		
+		//Creamos la tabla 
+		tablaUsuarios = new JTable();
+		tablaUsuarios.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		tablaUsuarios.setRowHeight(26);
+		tablaUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tablaUsuarios.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
 		
+		JPanel panelCentro = new JPanel(new BorderLayout());
+		panelCentro.setBackground(new Color(30, 30, 30));
+		panelCentro.setBorder(BorderFactory.createEmptyBorder(0, 25, 0 ,25));
+		
+		add(panelCentro, BorderLayout.CENTER);
 		
 		
 		setVisible(true);
