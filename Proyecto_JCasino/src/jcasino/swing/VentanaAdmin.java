@@ -151,6 +151,40 @@ public class VentanaAdmin extends JFrame {
 		});
 		
 		
+		//Acción para el botón editar saldo de un jugador seleccionado
+		botonEditarSaldo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int fila = tablaUsuarios.getSelectedRow();
+				if (fila == -1) {
+					JOptionPane.showMessageDialog(VentanaAdmin.this, "Selecciona un usuario de la tabla");
+					return;
+				}
+				
+				String nombreUsuario = (String) modeloTabla.getValueAt(fila, 0);
+				String entrada = JOptionPane.showInputDialog(VentanaAdmin.this, "Nuevo saldo para "+nombreUsuario+":");
+				
+				if(entrada == null) {
+					return;
+				}
+				
+				try {
+					double nuevoSaldo = Double.parseDouble(entrada.trim());
+					if (casino.actualizarSaldoJugador(nombreUsuario, nuevoSaldo)) {
+						modeloTabla.refrescar(casino.getListaUsuarios());
+					} else {
+						JOptionPane.showMessageDialog(VentanaAdmin.this, "Solo se puede editar el saldo de un Jugador.");
+					}
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(VentanaAdmin.this, "Introduce una cantidad válida.");
+				} catch (IllegalArgumentException ex) {
+					JOptionPane.showMessageDialog(VentanaAdmin.this, ex.getMessage());
+				}
+			}
+		});
+		
+		
 		setVisible(true);
 	}
 	
