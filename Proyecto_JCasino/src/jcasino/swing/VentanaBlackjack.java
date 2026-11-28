@@ -2,6 +2,7 @@ package jcasino.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -63,18 +64,27 @@ public class VentanaBlackjack extends JFrame{
 		panelJuego.setLayout(new BorderLayout());
 		panelJuego.setBackground(colorFondo);
 		panelJuego.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3)); 
-						
+		
 		//Zona del Crupier
+		JPanel panelCrupier = new JPanel();
+		panelCrupier.setBackground(colorFondo);
+		
 		JLabel labelCrupier = new JLabel("CRUPIER", SwingConstants.CENTER);
 		labelCrupier.setForeground(Color.WHITE);
-		labelCrupier.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		labelCrupier.setFont(fuenteZona);
+		labelCrupier.setBorder(BorderFactory.createEmptyBorder(8, 0, 5, 0));
 		
-		labelCrupier.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); //Margen para que no se pegue a la línea negra
+		JPanel panelCartasCrupier = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
+		panelCartasCrupier.setBackground(colorFondo);
+		panelCartasCrupier.setPreferredSize(new Dimension(550, 110));
+		
+		panelCrupier.add(labelCrupier, BorderLayout.NORTH);
+		panelCrupier.add(panelCartasCrupier, BorderLayout.CENTER);
 		panelJuego.add(labelCrupier, BorderLayout.NORTH);
 				
-		//Zona para las cartas
+		//Zona central para los mensajes de la partida
 		JLabel labelCentral = new JLabel("ZONA DE JUEGO", SwingConstants.CENTER);
-		labelCentral.setForeground(Color.WHITE);
+		labelCentral.setForeground(Color.YELLOW);
 		labelCentral.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		panelJuego.add(labelCentral, BorderLayout.CENTER);
 								
