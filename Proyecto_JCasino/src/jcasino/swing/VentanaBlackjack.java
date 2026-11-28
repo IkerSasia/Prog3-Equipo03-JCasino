@@ -7,6 +7,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import jcasino.dominio.Blackjack;
+import jcasino.dominio.Carta;
 import jcasino.dominio.Casino;
 import jcasino.dominio.Jugador;
 
@@ -237,13 +240,24 @@ public class VentanaBlackjack extends JFrame{
 				dispose();
 			}
 		});		
-		
 				
 		// Finalmente, añadimos el panel principal a la ventana
 		add(panelPrincipal);
-		
-
-		
 		setVisible(true);
 	}	
+	
+	
+	private JPanel crearCartaOculta() {
+		JPanel panelCarta = new JPanel(new BorderLayout());
+		panelCarta.setPreferredSize(new Dimension(70, 95));
+		panelCarta.setBackground(new Color(160, 30, 30));
+		panelCarta.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+		
+		JLabel labelDorso = new JLabel("?", SwingConstants.CENTER);
+		labelDorso.setFont(new Font("Segoe UI", Font.BOLD, 28));
+		labelDorso.setForeground(Color.WHITE);
+
+		panelCarta.add(labelDorso, BorderLayout.CENTER);
+		return panelCarta;
+	}
 }
