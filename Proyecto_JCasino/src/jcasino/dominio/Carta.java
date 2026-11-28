@@ -19,5 +19,15 @@ public class Carta {
 	}
 
 	
+	//Asignamos valores a las cartas con letras
+	public int getPuntos() {
+		if(valor.equals("A")) {
+			return 11;
+		}else if(valor.equals("J") || valor.equals("Q") || valor.equals("K")) {
+			return 10;
+		}else {
+			return Integer.parseInt(valor);
+		}
+	}
 
 }
