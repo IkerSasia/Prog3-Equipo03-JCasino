@@ -29,5 +29,14 @@ public class Carta {
 			return Integer.parseInt(valor);
 		}
 	}
-
+	
+	//En caso de que la carta sea de color rojo
+	public boolean esRojo() {
+		return palo.equals("♥") || palo.equals("♦");
+	}
+	
+	@Override
+	public String toString() {
+		return valor + palo;
+	}
 }
