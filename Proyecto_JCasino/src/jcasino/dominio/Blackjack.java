@@ -57,7 +57,28 @@ public class Blackjack extends Juego{
 		return new Carta(valor, palo);
 	}	
 	
+	
+	//Sumaro los puntos de cada mano (teniendo en cuenta el valor 1 o 11 de los Ases)
+	private int calcularPuntos(ArrayList<Carta> mano) {
+		int total = 0;
+		int ases = 0;
 		
+		for (Carta c: mano) {
+			total += c.getPuntos();
+			if (c.getValor().equals("A")) {
+				ases++;
+			}
+		}
+		
+		while (total > 21 && ases > 0) {
+			total -= 10;
+			ases--;
+		}
+		
+		return total;
+	}
+	
+	
 	//--------------------------------------------------------------//
 	//					FUNCIONAMIENTO DEL JUEGO					//
 	//--------------------------------------------------------------//
