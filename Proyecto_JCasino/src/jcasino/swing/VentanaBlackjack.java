@@ -198,9 +198,13 @@ public class VentanaBlackjack extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				blackjack.pedirCarta();
 				labelJugador.setText("JUGADOR: " + blackjack.getPuntosJugador());
+				actualizarCartas(panelCartasJugador, blackjack.getManoJugador(), false);
 				
 				if(!blackjack.isRondaActiva()) {
+					labelCrupier.setText("CRUPIER: "+blackjack.getPuntosCrupier());
+					actualizarCartas(panelCartasCrupier, blackjack.getManoCrupier(), false);
 					labelCentral.setText(blackjack.getResultado());
+					
 					botonPedir.setEnabled(false);
 					botonPlantarse.setEnabled(false);
 					botonJugar.setEnabled(true); // Al pasarse de 21, la ronda acaba y le permitimos volver a jugar
@@ -217,7 +221,9 @@ public class VentanaBlackjack extends JFrame{
 				
 				blackjack.plantarse(jugador);
 				labelCrupier.setText("CRUPIER: "+blackjack.getPuntosCrupier());
+				actualizarCartas(panelCartasCrupier, blackjack.getManoCrupier(), false);
 				labelCentral.setText(blackjack.getResultado());
+				labelSaldo.setText("Saldo actual: "+ jugador.getSaldo()+ " €");
 				
 				botonJugar.setEnabled(true);
 			}
