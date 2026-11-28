@@ -136,7 +136,7 @@ public class VentanaBlackjack extends JFrame{
 		JButton botonSalir = new JButton("SALIR");
 		botonSalir.setFont(fuenteBotones);
 		botonSalir.setBackground(new Color(180, 50, 50));
-		botonSalir.setForeground(Color.white);
+		botonSalir.setForeground(Color.WHITE);
 		botonSalir.setFocusPainted(false);
 				
 		panelBotones.add(botonJugar);
@@ -171,21 +171,18 @@ public class VentanaBlackjack extends JFrame{
 				try {
 					double apuesta = Double.parseDouble(entrada.trim());
 					blackjack.jugar(apuesta, jugador);
-
+					
+					labelSaldo.setText("Saldo actual: "+ jugador.getSaldo());
 					labelJugador.setText("JUGADOR: " + blackjack.getPuntosJugador());
-					labelCrupier.setText("CRUPIER: " + blackjack.getPuntosCrupier());
-
-					if(!blackjack.isRondaActiva()) {
-						labelCentral.setText(blackjack.getResultado());
-						botonJugar.setEnabled(true);
-						botonPedir.setEnabled(false);
-						botonPlantarse.setEnabled(false);
-					} else {
-						labelCentral.setText("¿Pides carta o te plantas?");
-						botonJugar.setEnabled(false);
-						botonPedir.setEnabled(true);
-						botonPlantarse.setEnabled(true);
-					}
+					labelCrupier.setText("CRUPIER: " + blackjack.getManoCrupier().get(0).getPuntos()+ " + ?");
+					
+					actualizarCartas(panelCartasJugador, blackjack.getManoJugador(), false);
+					actualizarCartas(panelCartasCrupier, blackjack.getManoJugador(), true);
+					
+					labelCentral.setText("¿Pides carta o te plantas?");
+					botonJugar.setEnabled(false);
+					botonPedir.setEnabled(true);
+					botonPlantarse.setEnabled(true);
 					
 				} catch (NumberFormatException e2) {
 					JOptionPane.showMessageDialog(VentanaBlackjack.this, "Introduce una cantidad válida.");
