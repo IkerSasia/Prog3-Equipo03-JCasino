@@ -31,24 +31,24 @@ public class VentanaBlackjack extends JFrame{
 		setTitle("Mesa de Blackjack");
 		
 		Color colorFondo = new Color(40, 120, 80);
+		Color colorBotones = new Color(70, 70, 70);
+		
+		Font fuenteBotones = new Font("Segoe UI", Font.BOLD, 14);
 		
 		
 		//Panel Principal: Ocupa toda la ventana y nos da los márgenes
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setLayout(new BorderLayout());
 		panelPrincipal.setBackground(colorFondo);
-		// EmptyBorder(Arriba, Izquierda, Abajo, Derecha). Le damos 40px de margen lateral
 		panelPrincipal.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40)); 
 			
 		
-		//Panel del Juego: zona para el crupier, el jugador y el las cartas
+		//Panel del Juego: zona para el crupier, el jugador y las cartas
 		JPanel panelJuego = new JPanel();
 		panelJuego.setLayout(new BorderLayout());
 		panelJuego.setBackground(colorFondo);
-		// Le pintamos la línea negra alrededor a todo este bloque
 		panelJuego.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3)); 
-				
-				
+						
 		//Zona del Crupier
 		JLabel labelCrupier = new JLabel("CRUPIER", SwingConstants.CENTER);
 		labelCrupier.setForeground(Color.WHITE);
@@ -57,14 +57,12 @@ public class VentanaBlackjack extends JFrame{
 		labelCrupier.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); //Margen para que no se pegue a la línea negra
 		panelJuego.add(labelCrupier, BorderLayout.NORTH);
 				
-				
 		//Zona para las cartas
 		JLabel labelCentral = new JLabel("ZONA DE JUEGO", SwingConstants.CENTER);
 		labelCentral.setForeground(Color.WHITE);
 		labelCentral.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		panelJuego.add(labelCentral, BorderLayout.CENTER);
-				
-				
+								
 		//Zona para el Jugador
 		JLabel labelJugador = new JLabel("JUGADOR", SwingConstants.CENTER);
 		labelJugador.setForeground(Color.WHITE);
@@ -72,7 +70,6 @@ public class VentanaBlackjack extends JFrame{
 		
 		labelJugador.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 		panelJuego.add(labelJugador, BorderLayout.SOUTH);
-				
 				
 		// Añadimos el crupier, el jugador y la zona de juego al centro de la interfaz
 		panelPrincipal.add(panelJuego, BorderLayout.CENTER);
@@ -84,25 +81,25 @@ public class VentanaBlackjack extends JFrame{
 		panelBotones.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0)); // Margén con la parte de arriba
 				
 		JButton botonJugar = new JButton("JUGAR");
-		botonJugar.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		botonJugar.setBackground(new Color(70, 70, 70));
+		botonJugar.setFont(fuenteBotones);
+		botonJugar.setBackground(colorBotones);
 		botonJugar.setForeground(Color.white);
 		botonJugar.setFocusPainted(false);
 		
 		JButton botonPlantarse = new JButton("PLANTARSE");
-		botonPlantarse.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		botonPlantarse.setBackground(new Color(70, 70, 70));
+		botonPlantarse.setFont(fuenteBotones);
+		botonPlantarse.setBackground(colorBotones);
 		botonPlantarse.setForeground(Color.white);
 		botonPlantarse.setFocusPainted(false);
 		
 		JButton botonPedir = new JButton("PEDIR CARTA");
-		botonPedir.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		botonPedir.setBackground(new Color(70, 70, 70));
+		botonPedir.setFont(fuenteBotones);
+		botonPedir.setBackground(colorBotones);
 		botonPedir.setForeground(Color.white);
 		botonPedir.setFocusPainted(false);
 		
 		JButton botonSalir = new JButton("SALIR");
-		botonSalir.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		botonSalir.setFont(fuenteBotones);
 		botonSalir.setBackground(new Color(180, 50, 50));
 		botonSalir.setForeground(Color.white);
 		botonSalir.setFocusPainted(false);
@@ -111,6 +108,10 @@ public class VentanaBlackjack extends JFrame{
 		panelBotones.add(botonPlantarse);
 		panelBotones.add(botonPedir);
 		panelBotones.add(botonSalir);
+		
+		// Añadimos los botones a la parte sur del panel principal
+		panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
+		
 		
 		//Desactivamos los botones de Pedir y Plantarse hasta que empiece la ronda
 		botonPedir.setEnabled(false);
@@ -155,12 +156,10 @@ public class VentanaBlackjack extends JFrame{
 					JOptionPane.showMessageDialog(VentanaBlackjack.this, "Introduce una cantidad válida.");
 				} catch (IllegalArgumentException | IllegalStateException e2) {
 					JOptionPane.showMessageDialog(VentanaBlackjack.this, e2.getMessage());
-				}
-				
+				}		
 			}
 		});
-		
-		
+			
 		//Acción para el botón Pedir Carta
 		botonPedir.addActionListener(new ActionListener() {
 			@Override
@@ -192,13 +191,6 @@ public class VentanaBlackjack extends JFrame{
 			}
 		});
 		
-				
-		// Añadimos los botones a la parte sur del panel principal
-		panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
-					
-		// Finalmente, añadimos el panel principal a la ventana
-		add(panelPrincipal);
-		
 		// Añadimos la acción de volver al menú al botón de salir
 		botonSalir.addActionListener(new ActionListener() {
 			@Override
@@ -206,7 +198,14 @@ public class VentanaBlackjack extends JFrame{
 				new VentanaMenuJuegos(casino, jugador);
 				dispose();
 			}
-		});
+		});		
+		
+				
+		// Finalmente, añadimos el panel principal a la ventana
+		add(panelPrincipal);
+		
+
+		
 		setVisible(true);
 	}	
 }
