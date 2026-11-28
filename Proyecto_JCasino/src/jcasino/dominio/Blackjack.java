@@ -57,7 +57,6 @@ public class Blackjack extends Juego{
 		return new Carta(valor, palo);
 	}	
 	
-	
 	//Sumaro los puntos de cada mano (teniendo en cuenta el valor 1 o 11 de los Ases)
 	private int calcularPuntos(ArrayList<Carta> mano) {
 		int total = 0;
@@ -79,6 +78,7 @@ public class Blackjack extends Juego{
 	}
 	
 	
+	
 	//--------------------------------------------------------------//
 	//					FUNCIONAMIENTO DEL JUEGO					//
 	//--------------------------------------------------------------//
@@ -98,68 +98,52 @@ public class Blackjack extends Juego{
 		}
 		
 		this.apuestaActual = cantidadApostada;
-		this.puntosJugador = sacarCarta() + sacarCarta();
-		this.puntosCrupier = sacarCarta() + sacarCarta();
+		this.manoJugador.clear();
+		this.manoCrupier.clear();
+		
+		//Sacamos dos cartas para cada uno al empezar la ronda
+		this.manoJugador.add(sacarCarta());
+		this.manoJugador.add(sacarCarta());
+		this.manoCrupier.add(sacarCarta());
+		this.manoCrupier.add(sacarCarta());
+		
 		this.rondaActiva = true;
 		this.resultado = "";
-		
-		if (puntosJugador > 21) {
-			this.rondaActiva = false;
-			this.resultado = "¡Te has pasado de 21! Gana el crupier";
-		}
 		
 		return 0;
 	}
 	
+	
+	
+	
 	//Turno del jugador: pide una carta nueva
-	public int pedirCarta() {
+	public Carta pedirCarta() {
 		
 		//Mensaje por pedir carta cuando no ha empezado el juego
 		if(!rondaActiva) {
 			throw new IllegalStateException("No hay ninguna ronda activa");
 		}
 		
-		int nuevaCarta = sacarCarta();
-		puntosJugador += nuevaCarta;
+		Carta nuevaCarta = sacarCarta();
+		manoJugador.add(nuevaCarta);
 		
-		if(puntosJugador > 21) {
+		if(getPuntosJugador() > 21) {
 			rondaActiva = false;
 			resultado = "¡Te has pasado de 21! Gana el crupier";
 		}
 		return nuevaCarta;
 	}
 	
+	
+	
 	public double plantarse(Jugador jugador) {
-		
-		//Mensaje por plantarse cuando no ha empezado la partida
-		if(!rondaActiva) {
+		if (!rondaActiva) {
 			throw new IllegalStateException("No hay ninguna ronda activa");
 		}
 		
-		rondaActiva = false;
-		
-		while (puntosCrupier < 17) {
-			puntosCrupier += sacarCarta();
+		while (crupierRoba()) {
+			crupierRobaCarta();
 		}
-
-		if (puntosJugador == 21 && puntosCrupier != 21) {
-			double premio = apuestaActual * 2.5;
-			jugador.recargarSaldo(premio);
-			resultado = "¡Blackjack! Has ganado " + premio + " €.";
-			return premio;
-		} else if (puntosCrupier > 21 || puntosJugador > puntosCrupier) {
-			double premio = apuestaActual * 2;
-			jugador.recargarSaldo(premio);
-			resultado = "¡Has ganado! Premio: " + premio + " €.";
-			return premio;
-		} else if (puntosJugador == puntosCrupier) {
-			double premio = apuestaActual;
-			jugador.recargarSaldo(premio);
-			resultado = "Empate. Recuperas " + premio + " €.";
-			return premio;
-		} else {
-			resultado = "Gana el crupier.";
-			return 0;
-		}
+		return resolverRonda(jugador);
 	}
 }
