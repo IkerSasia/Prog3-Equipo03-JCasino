@@ -130,20 +130,18 @@ public class Blackjack extends Juego{
 		}
 		return nuevaCarta;
 	}
-	
-	
+
 	//Método para que el crupier robe carta si tiene menos de 17
 	public boolean crupierRoba() {
 		return getPuntosCrupier() < 17;
 	}
 	
+	//Método para que el crupier robe una carta
 	public Carta crupierRobaCarta() {
 		Carta nuevaCarta = sacarCarta();
 		manoCrupier.add(nuevaCarta);
 		return nuevaCarta;
 	}
-	
-	
 	
 	//Método para evaluar los puntos del jugador y robar carta si así lo desea
 	public double resolverRonda(Jugador jugador) {
@@ -176,10 +174,10 @@ public class Blackjack extends Juego{
 		}
 	}
 	
-	
 	//Después de plantarse, el crupier toma acción y se decide la ronda
 	public double plantarse(Jugador jugador) {
-		if (!rondaActiva) {
+		
+		if(!rondaActiva) {
 			throw new IllegalStateException("No hay ninguna ronda activa");
 		}
 		

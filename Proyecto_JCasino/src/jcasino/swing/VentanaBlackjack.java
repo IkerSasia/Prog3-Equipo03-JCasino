@@ -2,6 +2,7 @@ package jcasino.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,16 +33,30 @@ public class VentanaBlackjack extends JFrame{
 		
 		Color colorFondo = new Color(40, 120, 80);
 		Color colorBotones = new Color(70, 70, 70);
-		
 		Font fuenteBotones = new Font("Segoe UI", Font.BOLD, 14);
-		
+		Font fuenteZona = new Font("Segoe UI", Font.BOLD, 18);
 		
 		//Panel Principal: Ocupa toda la ventana y nos da los márgenes
 		JPanel panelPrincipal = new JPanel();
-		panelPrincipal.setLayout(new BorderLayout());
+		panelPrincipal.setLayout(new BorderLayout(0, 10));
 		panelPrincipal.setBackground(colorFondo);
-		panelPrincipal.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40)); 
+		panelPrincipal.setBorder(BorderFactory.createEmptyBorder(15, 35, 15, 35)); 
 			
+		//Panel SUuperior: saldo actual del jugador
+		JPanel panelSuperior = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
+		panelSuperior.setBackground(colorFondo);
+		
+		JLabel labelTitulo = new JLabel("BLACKJACK");
+		labelTitulo.setForeground(Color.WHITE);
+		labelTitulo.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		
+		JLabel labelSaldo = new JLabel("Saldo actual: "+ jugador.getSaldo());
+		labelSaldo.setForeground(Color.YELLOW);
+		labelSaldo.setFont(fuenteBotones);
+		
+		panelSuperior.add(labelTitulo);
+		panelSuperior.add(labelSaldo);
+		panelPrincipal.add(panelSuperior, BorderLayout.NORTH);
 		
 		//Panel del Juego: zona para el crupier, el jugador y las cartas
 		JPanel panelJuego = new JPanel();
