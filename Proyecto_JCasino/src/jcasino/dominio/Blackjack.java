@@ -112,10 +112,7 @@ public class Blackjack extends Juego{
 		
 		return 0;
 	}
-	
-	
-	
-	
+		
 	//Turno del jugador: pide una carta nueva
 	public Carta pedirCarta() {
 		
@@ -135,7 +132,52 @@ public class Blackjack extends Juego{
 	}
 	
 	
+	//Método para que el crupier robe carta si tiene menos de 17
+	public boolean crupierRoba() {
+		return getPuntosCrupier() < 17;
+	}
 	
+	public Carta crupierRobaCarta() {
+		Carta nuevaCarta = sacarCarta();
+		manoCrupier.add(nuevaCarta);
+		return nuevaCarta;
+	}
+	
+	
+	
+	//Método para evaluar los puntos del jugador y robar carta si así lo desea
+	public double resolverRonda(Jugador jugador) {
+		if(!rondaActiva) {
+			throw new IllegalStateException("No hay ninguna ronda activa");
+		}
+		
+		rondaActiva = false;
+		int puntosJugador = getPuntosJugador();
+		int puntosCrupier = getPuntosCrupier();
+
+		if (puntosJugador == 21 && puntosCrupier != 21) {
+			double premio = apuestaActual * 2.5;
+			jugador.recargarSaldo(premio);
+			resultado = "¡Blackjack! Has ganado " + premio + " €.";
+			return premio;
+		} else if (puntosCrupier > 21 || puntosJugador > puntosCrupier) {
+			double premio = apuestaActual * 2;
+			jugador.recargarSaldo(premio);
+			resultado = "¡Has ganado! Premio: " + premio + " €.";
+			return premio;
+		} else if (puntosJugador == puntosCrupier) {
+			double premio = apuestaActual;
+			jugador.recargarSaldo(premio);
+			resultado = "Empate. Recuperas " + premio + " €.";
+			return premio;
+		} else {
+			resultado = "Gana el crupier.";
+			return 0;
+		}
+	}
+	
+	
+	//Después de plantarse, el crupier toma acción y se decide la ronda
 	public double plantarse(Jugador jugador) {
 		if (!rondaActiva) {
 			throw new IllegalStateException("No hay ninguna ronda activa");
