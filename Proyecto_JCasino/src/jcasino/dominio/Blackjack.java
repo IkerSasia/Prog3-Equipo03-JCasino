@@ -1,12 +1,13 @@
 package jcasino.dominio;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Blackjack extends Juego{
 	
 	private Random cartas;
-	private int puntosJugador;
-	private int puntosCrupier;
+	private ArrayList<Carta> manoJugador;
+	private ArrayList<Carta> manoCrupier;
 	private double apuestaActual;
 	private boolean rondaActiva;
 	private String resultado;
@@ -14,19 +15,27 @@ public class Blackjack extends Juego{
 	public Blackjack(String nombre, double apuestaMinima) {
 		super(nombre, apuestaMinima);
 		this.cartas = new Random();
-		this.puntosJugador = 0;
-		this.puntosCrupier = 0;
+		this.manoJugador = new ArrayList<Carta>();
+		this.manoCrupier = new ArrayList<Carta>();
 		this.apuestaActual = 0;
 		this.rondaActiva = false;
 		this.resultado = "";
 	}
 	
+	public ArrayList<Carta> getManoJugador() {
+		return manoJugador;
+	}
+
+	public ArrayList<Carta> getManoCrupier() {
+		return manoCrupier;
+	}
+
 	public int getPuntosJugador() {
-		return puntosJugador;
+		return calcularPuntos(manoJugador);
 	}
 
 	public int getPuntosCrupier() {
-		return puntosCrupier;
+		return calcularPuntos(manoCrupier);
 	}
 
 	public boolean isRondaActiva() {
@@ -37,10 +46,16 @@ public class Blackjack extends Juego{
 		return resultado;
 	}
 	
-	// Método para sacar una carta con un valor aleatorio entre 1 y 11
-		private int sacarCarta() {
-			return cartas.nextInt(11) + 1;
-		}
+	// Método para sacar una carta aleatoria combinando valores y palos
+	private Carta sacarCarta() {
+		String[] valores = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+		String[] palos = { "♠", "♥", "♦", "♣" };
+		
+		String valor = valores[cartas.nextInt(valores.length)];
+		String palo = palos[cartas.nextInt(palos.length)];
+		
+		return new Carta(valor, palo);
+	}	
 	
 		
 	//--------------------------------------------------------------//
